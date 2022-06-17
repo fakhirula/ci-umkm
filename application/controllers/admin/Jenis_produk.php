@@ -1,0 +1,66 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Jenis_produk extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->model('admin/jenisproduk_model');
+    }
+
+    public function index()
+    {
+        $data['jenis_produk'] = $this->jenisproduk_model->getAll();
+        $this->load->view('admin/jenis_produk/index', $data);
+    }
+
+    public function add()
+    {
+        $jproduk = $this->jenisproduk_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($jproduk->rules());
+
+        if ($validation->run()) {
+            $jproduk->save();
+            $this->session->set_flashdata('smart-alert', 'Data berhasil ditambahkan');
+        } else {
+            $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
+        }
+
+        redirect(site_url('admin/jenis_produk'));
+    }
+
+    public function edit($id = null)
+    {
+        if (!isset($id)) redirect('admin/jenis_produk');
+
+        $jproduk = $this->jenisproduk_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($jproduk->rules());
+
+        if ($validation->run()) {
+            $jproduk->update();
+            $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+        } else {
+            $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
+        }
+
+        $data["jenis_produk"] = $jproduk->getById($id);
+        if (!$data["jenis_produk"]) show_404();
+
+        $this->load->view("admin/jenis_produk/edit", $data);
+    }
+
+    public function delete($id = null)
+    {
+        if (!isset($id)) show_404();
+
+        if ($this->jenisproduk_model->delete($id)) {
+            $this->session->set_flashdata('smart-alert', 'Data berhasil dihapus');
+            redirect(site_url('admin/jenis_produk'));
+        }
+    }
+}
