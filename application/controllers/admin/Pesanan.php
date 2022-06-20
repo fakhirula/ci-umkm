@@ -9,10 +9,21 @@ class Pesanan extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->model('admin/pesanan_model');
+
+        // Check login information
+        $current_user = $this->auth_model->current_user();
+        if ($current_user) {
+            if ($current_user->role != 'administrator') {
+                redirect(base_url());
+            }
+        } else {
+            redirect('auth/login');
+        }
     }
 
     public function index()
     {
+        $data['current_user'] = $this->auth_model->current_user();
         $data['pesanan'] = $this->pesanan_model->getAll();
         $this->load->view('admin/pesanan/index', $data);
     }
@@ -48,6 +59,7 @@ class Pesanan extends CI_Controller
             $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
         }
 
+        $data['current_user'] = $this->auth_model->current_user();
         $data["pesanan"] = $pesanan->getById($id);
         if (!$data["pesanan"]) show_404();
 

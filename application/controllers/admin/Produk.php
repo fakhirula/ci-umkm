@@ -9,10 +9,21 @@ class Produk extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->model('admin/produk_model');
+
+        // Check login information
+        $current_user = $this->auth_model->current_user();
+        if ($current_user) {
+            if ($current_user->role != 'administrator') {
+                redirect(base_url());
+            }
+        } else {
+            redirect('auth/login');
+        }
     }
 
     public function index()
     {
+        $data['current_user'] = $this->auth_model->current_user();
         $data['produk'] = $this->produk_model->getAll();
         $this->load->view('admin/produk/index', $data);
     }
@@ -48,6 +59,7 @@ class Produk extends CI_Controller
             $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
         }
 
+        $data['current_user'] = $this->auth_model->current_user();
         $data["produk"] = $produk->getById($id);
         if (!$data["produk"]) show_404();
 

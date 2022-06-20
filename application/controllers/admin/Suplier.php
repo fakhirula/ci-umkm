@@ -9,10 +9,21 @@ class Suplier extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->model('admin/suplier_model');
+
+        // Check login information
+        $current_user = $this->auth_model->current_user();
+        if ($current_user) {
+            if ($current_user->role != 'administrator') {
+                redirect(base_url());
+            }
+        } else {
+            redirect('auth/login');
+        }
     }
 
     public function index()
     {
+        $data['current_user'] = $this->auth_model->current_user();
         $data['suplier'] = $this->suplier_model->getAll();
         $this->load->view('admin/suplier/index', $data);
     }
@@ -48,6 +59,7 @@ class Suplier extends CI_Controller
             $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
         }
 
+        $data['current_user'] = $this->auth_model->current_user();
         $data["suplier"] = $suplier->getById($id);
         if (!$data["suplier"]) show_404();
 
