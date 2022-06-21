@@ -58,7 +58,7 @@ class Pesanan extends CI_Controller
         }
 
         $data['current_user'] = $this->auth_model->current_user();
-        $data["pesanan"] = $pesanan->getById($id);
+        $data["pesanan"] = $pesanan->getById($this->secure->decrypt_url($id));
         if (!$data["pesanan"]) show_404();
 
         $this->load->view("admin/pesanan/edit", $data);

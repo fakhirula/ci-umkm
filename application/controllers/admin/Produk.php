@@ -58,7 +58,7 @@ class Produk extends CI_Controller
         }
 
         $data['current_user'] = $this->auth_model->current_user();
-        $data["produk"] = $produk->getById($id);
+        $data["produk"] = $produk->getById($this->secure->decrypt_url($id));
         if (!$data["produk"]) show_404();
 
         $this->load->view("admin/produk/edit", $data);

@@ -53,7 +53,7 @@ class Produk_model extends CI_Model
 
     public function getById($id)
     {
-        return $this->db->get_where($this->table, ['id' => $id])->row();
+        return $this->db->get_where($this->table, ['id' =>$id])->row();
     }
 
     public function save()

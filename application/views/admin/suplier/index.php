@@ -88,10 +88,10 @@
                                                 <td><?= $row->alamat ?></td>
                                                 <td><?= $row->telpon ?></td>
                                                 <td>
-                                                    <a href="<?= site_url('admin/suplier/edit/' . $row->id) ?>" class="btn btn-warning btn-circle btn-sm">
+                                                    <a href="<?= site_url('admin/suplier/edit/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-warning btn-circle btn-sm">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </a>
-                                                    <a onclick="deleteConfirm('<?= site_url('admin/suplier/delete/' . $row->id) ?>')" class="btn btn-danger btn-circle btn-sm">
+                                                    <a onclick="deleteConfirm('<?= site_url('admin/suplier/delete/' . $this->secure->encrypt_url($row->id)) ?>')" class="btn btn-danger btn-circle btn-sm">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>

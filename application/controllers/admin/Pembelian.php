@@ -58,7 +58,7 @@ class Pembelian extends CI_Controller
         }
 
         $data['current_user'] = $this->auth_model->current_user();
-        $data["pembelian"] = $pembelian->getById($id);
+        $data["pembelian"] = $pembelian->getById($this->secure->decrypt_url($id));
         if (!$data["pembelian"]) show_404();
 
         $this->load->view("admin/pembelian/edit", $data);

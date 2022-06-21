@@ -76,10 +76,10 @@
                                                 <td><?= $id ?></td>
                                                 <td><?= $row->nama ?></td>
                                                 <td>
-                                                    <a href="<?= site_url('admin/jenis_produk/edit/' . $row->id) ?>" class="btn btn-warning btn-circle btn-sm">
+                                                    <a href="<?= site_url('admin/jenis_produk/edit/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-warning btn-circle btn-sm">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </a>
-                                                    <a onclick="deleteConfirm('<?= site_url('admin/jenis_produk/delete/' . $row->id) ?>')" class="btn btn-danger btn-circle btn-sm">
+                                                    <a onclick="deleteConfirm('<?= site_url('admin/jenis_produk/delete/' . $this->secure->encrypt_url($row->id)) ?>')" class="btn btn-danger btn-circle btn-sm">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>

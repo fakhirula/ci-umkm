@@ -35,13 +35,6 @@ class Auth extends CI_Controller
 
             if ($this->auth_model->login($username, $password)) {
                 redirect('admin');
-                // if ($current_user->role != 'administrator') {
-                //     // redirect(base_url());
-                //     echo $current_user->role;
-                // } else {
-                //     // redirect('admin');
-                //     echo $current_user->role;
-                // }
             } else {
                 $this->session->set_flashdata('message_login_error', 'Login Gagal, pastikan username, password benar dan akun aktif!');
                 $this->load->view('auth/login');

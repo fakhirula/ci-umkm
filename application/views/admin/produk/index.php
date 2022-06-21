@@ -94,10 +94,10 @@
                                                 <td><?= $row->jenis_id ?></td>
                                                 <td><?= $row->deskripsi ?></td>
                                                 <td>
-                                                    <a href="<?= site_url('admin/produk/edit/' . $row->id) ?>" class="btn btn-warning btn-circle btn-sm">
+                                                    <a href="<?= site_url('admin/produk/edit/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-warning btn-circle btn-sm">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </a>
-                                                    <a onclick="deleteConfirm('<?= site_url('admin/produk/delete/' . $row->id) ?>')" class="btn btn-danger btn-circle btn-sm">
+                                                    <a onclick="deleteConfirm('<?= site_url('admin/produk/delete/' . $this->secure->encrypt_url($row->id)) ?>')" class="btn btn-danger btn-circle btn-sm">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>

@@ -58,7 +58,7 @@ class Suplier extends CI_Controller
         }
 
         $data['current_user'] = $this->auth_model->current_user();
-        $data["suplier"] = $suplier->getById($id);
+        $data["suplier"] = $suplier->getById($this->secure->decrypt_url($id));
         if (!$data["suplier"]) show_404();
 
         $this->load->view("admin/suplier/edit", $data);
