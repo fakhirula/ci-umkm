@@ -24,6 +24,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                                     </div>
                                     <form class="user" method="POST" action="<?= base_url('auth/registration') ?>">
+                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Username">
                                         </div>

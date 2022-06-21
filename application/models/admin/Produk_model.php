@@ -4,15 +4,6 @@ class Produk_model extends CI_Model
 {
     private $table = 'produk';
 
-    public $id;
-    public $nama;
-    public $stok;
-    public $harga_beli;
-    public $harga_jual;
-    public $foto;
-    public $jenis_id;
-    public $deskripsi;
-
     public function rules()
     {
         return [

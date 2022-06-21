@@ -4,13 +4,6 @@ class Pembelian_model extends CI_Model
 {
     private $table = 'pembelian';
 
-    public $id;
-    public $tanggal;
-    public $jumlah;
-    public $harga;
-    public $produk_id;
-    public $suplier_id;
-
     public function rules()
     {
         return [

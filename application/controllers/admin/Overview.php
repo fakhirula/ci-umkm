@@ -22,6 +22,5 @@ class Overview extends CI_Controller
     {
         $data['current_user'] = $this->auth_model->current_user();
         $this->load->view('admin/overview', $data);
-
     }
 }

@@ -10,7 +10,7 @@
             </div>
             <form action="<?= site_url('admin/pembelian/add') ?>" method="POST">
                 <div class="modal-body">
-                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+                    <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="form-group mb-2 row">
                         <label for="tanggal" class="col-4 col-form-label">Tanggal</label>
                         <div class="col-8">

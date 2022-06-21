@@ -4,12 +4,6 @@ class Pesanan_model extends CI_Model
 {
     private $table = 'pesanan';
 
-    public $id;
-    public $tanggal;
-    public $jumlah;
-    public $users_id;
-    public $produk_id;
-
     public function rules()
     {
         return [

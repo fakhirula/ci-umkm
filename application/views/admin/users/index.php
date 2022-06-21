@@ -68,23 +68,28 @@
                                     <tbody>
                                         <?php
                                         $id = 1;
-                                        foreach ($list_users as $user) {
+                                        foreach ($users as $row) {
                                         ?>
                                             <tr>
                                                 <td><?= $id ?></td>
-                                                <td><?= $user->username ?></td>
-                                                <td><?= $user->email ?></td>
-                                                <td><?= $user->status ?></td>
-                                                <td><?= $user->role ?></td>
-                                                <td><?= $user->created_at ?></td>
-                                                <td><?= $user->last_login ?></td>
+                                                <td><?= $row->username ?></td>
+                                                <td><?= $row->email ?></td>
+                                                <td><?= $row->status ?></td>
+                                                <td><?= $row->role ?></td>
+                                                <td><?= $row->created_at ?></td>
+                                                <td><?= $row->last_login ?></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-warning btn-circle btn-sm">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
+                                                    <?php if ($row->id != $current_user->id) : ?>
+                                                        <?php if ($row->status == 0) : ?>
+                                                            <a href="<?= site_url('admin/users/setActive/' . $row->id) ?>" class="btn btn-success btn-sm">
+                                                                <i class="fa-solid fa-check"></i>Aktifkan
+                                                            </a>
+                                                        <?php else : ?>
+                                                            <a href="<?= site_url('admin/users/setNonactive/' . $row->id) ?>" class="btn btn-danger btn-sm">
+                                                                <i class="fas fa-delete"></i>Nonaktifkan
+                                                            </a>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
                                                 </td>
                                             </tr>
                                         <?php

@@ -4,13 +4,6 @@ class Users_model extends CI_Model
 {
     private $table = 'users';
 
-    public $id;
-    public $username;
-    public $password;
-    public $email;
-    public $status;
-    public $role;
-
     public function rules()
     {
         return [
@@ -53,33 +46,19 @@ class Users_model extends CI_Model
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
 
-    public function save()
+    public function setActive($id)
     {
-        $post = $this->input->post();
-        $this->username = $post['username'];
-        $this->password = $post['password'];
-        $this->email = $post['email'];
-        $this->status = $post['status'];
-        $this->role = $post['role'];
-
-        return $this->db->insert($this->table, $this);
+        $data = array(
+            'status' => 1,
+        );
+        return $this->db->update($this->table, $data, array('id' => $id));
     }
 
-    public function update()
+    public function setNonactive($id)
     {
-        $post = $this->input->post();
-        $this->id = $post['id'];
-        $this->username = $post['username'];
-        $this->password = $post['password'];
-        $this->email = $post['email'];
-        $this->status = $post['status'];
-        $this->role = $post['role'];
-
-        return $this->db->update($this->table, $this, array('id' => $post['id']));
-    }
-
-    public function delete($id)
-    {
-        return $this->db->delete($this->table, array('id' => $id));
+        $data = array(
+            'status' => 0,
+        );
+        return $this->db->update($this->table, $data, array('id' => $id));
     }
 }

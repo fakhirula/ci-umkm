@@ -87,7 +87,10 @@ class CI_Controller {
 		$this->load->initialize();
 		log_message('info', 'Controller Class Initialized');
 
+		// Custom Controller
 		$this->load->model('auth_model');
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
 	}
 
 	// --------------------------------------------------------------------

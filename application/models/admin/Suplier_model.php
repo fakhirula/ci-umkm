@@ -4,13 +4,6 @@ class Suplier_model extends CI_Model
 {
     private $table = 'suplier';
 
-    public $id;
-    public $nama;
-    public $kota;
-    public $kontak;
-    public $alamat;
-    public $telpon;
-
     public function rules()
     {
         return [

@@ -6,8 +6,6 @@ class Users extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper(array('form', 'url'));
-        $this->load->library('form_validation');
         $this->load->model('admin/users_model', 'users');
 
         // Check login information
@@ -24,9 +22,27 @@ class Users extends CI_Controller
     public function index()
     {
         $data['current_user'] = $this->auth_model->current_user();
-        $count = $this->db->get('users');
-        $count->num_rows();
-        $data['list_users'] = $this->users->getAll();
+        $data['users'] = $this->users->getAll();
         $this->load->view('admin/users/index', $data);
+    }
+
+    public function setActive($id = null)
+    {
+        if (!isset($id)) show_404();
+
+        if ($this->users->setActive($id)) {
+            $this->session->set_flashdata('smart-alert', 'Data berhasil diaktifkan');
+            redirect(site_url('admin/users'), 'refresh');
+        }
+    }
+
+    public function setNonactive($id = null)
+    {
+        if (!isset($id)) show_404();
+
+        if ($this->users->setNonactive($id)) {
+            $this->session->set_flashdata('smart-alert', 'Data berhasil dinonaktifkan');
+            redirect(site_url('admin/users'), 'refresh');
+        }
     }
 }

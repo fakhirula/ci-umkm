@@ -29,6 +29,7 @@
                                         </div>
                                     <?php endif; ?>
                                     <form action="" method="POST" class="user">
+                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                         <div class="form-group">
                                             <input name="username" id="username" value="<?php echo set_value('username'); ?>" type="text" class="form-control form-control-user" placeholder="Enter Username...">
                                         </div>

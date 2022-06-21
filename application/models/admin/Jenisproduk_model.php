@@ -4,9 +4,6 @@ class Jenisproduk_model extends CI_Model
 {
     private $table = 'jenis_produk';
 
-    public $id;
-    public $nama;
-
     public function rules()
     {
         return [
