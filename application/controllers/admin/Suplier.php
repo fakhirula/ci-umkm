@@ -51,8 +51,10 @@ class Suplier extends CI_Controller
         $validation->set_rules($suplier->rules());
 
         if ($validation->run()) {
-            $suplier->update();
-            $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+            if ($suplier->update()) {
+                $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+                redirect(site_url('admin/suplier'), 'refresh');
+            }
         } else {
             $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
         }

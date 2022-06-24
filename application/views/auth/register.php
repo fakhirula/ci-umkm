@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view("admin/_partials/head.php") ?>
+    <?php $this->load->view("templates/head.php") ?>
 </head>
 
 <body class="bg-gradient-primary">
@@ -26,17 +26,17 @@
                                     <form class="user" method="POST" action="<?= base_url('auth/registration') ?>">
                                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Username">
+                                            <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Username" autofocus>
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Email Address">
+                                            <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Email Address" autofocus>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password">
+                                                <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password" autofocus>
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="password" class="form-control form-control-user" name="password-repeat" id="password-repeat" placeholder="Repeat Password">
+                                                <input type="password" class="form-control form-control-user" name="password-repeat" id="password-repeat" placeholder="Repeat Password" autofocus>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
@@ -45,10 +45,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="<?= base_url('auth/registration') ?>">Forgot Password?</a>
+                                        <a class="small" href="<?= base_url('auth/forgot_password') ?>">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="<?= base_url('auth/index') ?>">Already have an account? Login!</a>
+                                        <a class="small" href="<?= base_url('auth/login') ?>">Already have an account? Login!</a>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <?php $this->load->view("admin/_partials/js.php") ?>
+    <?php $this->load->view("templates/js.php") ?>
 
 </body>
 

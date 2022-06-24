@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view("admin/_partials/head.php") ?>
+    <?php $this->load->view("templates/head.php") ?>
 </head>
 
 <body id="page-top">
@@ -30,15 +30,12 @@
                     <!-- Breadcrumb -->
                     <?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-                    <!-- Smart Alert -->
-                    <?php $this->load->view("admin/_partials/smart-alert.php") ?>
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <div class="row align-items-center">
                                 <div class="col-sm-6">
-                                    <h1 class="m-0 h5 text-gray-800"><?= "Table " . ucfirst($this->uri->segment(2)) ?></h1>
+                                    <h1 class="m-0 h5 text-gray-800"><?= "Table " . str_replace("_", " ", ucfirst($this->uri->segment(2))) ?></h1>
                                 </div>
                                 <div class="col-sm-6">
                                     <button type="button" class="float-sm-right btn btn-success btn-icon-split" data-toggle="modal" data-target="#addModal">
@@ -130,7 +127,7 @@
     <?php $this->load->view("admin/_partials/logout_modal.php") ?>
 
     <!-- Bootstrap core JavaScript-->
-    <?php $this->load->view("admin/_partials/js.php") ?>
+    <?php $this->load->view("templates/js.php") ?>
 
 </body>
 

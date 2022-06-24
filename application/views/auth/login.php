@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view("admin/_partials/head.php") ?>
+    <?php $this->load->view("templates/head.php") ?>
 </head>
 
 <body class="bg-gradient-primary">
@@ -31,10 +31,10 @@
                                     <form action="" method="POST" class="user">
                                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                         <div class="form-group">
-                                            <input name="username" id="username" value="<?php echo set_value('username'); ?>" type="text" class="form-control form-control-user" placeholder="Enter Username...">
+                                            <input name="username" id="username" value="<?php echo set_value('username'); ?>" type="text" class="form-control form-control-user" placeholder="Enter Username..." autofocus>
                                         </div>
                                         <div class="form-group">
-                                            <input name="password" id="password" value="<?php echo set_value('password'); ?>" type="password" class="form-control form-control-user" placeholder="Password">
+                                            <input name="password" id="password" value="<?php echo set_value('password'); ?>" type="password" class="form-control form-control-user" placeholder="Password" autofocus>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">Submit</button>
                                     </form>
@@ -58,7 +58,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <?php $this->load->view("admin/_partials/js.php") ?>
+    <?php $this->load->view("templates/js.php") ?>
 
 </body>
 

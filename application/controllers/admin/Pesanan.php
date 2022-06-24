@@ -51,8 +51,10 @@ class Pesanan extends CI_Controller
         $validation->set_rules($pesanan->rules());
 
         if ($validation->run()) {
-            $pesanan->update();
-            $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+            if ($pesanan->update()) {
+                $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+                redirect(site_url('admin/pesanan'), 'refresh');
+            }
         } else {
             $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
         }

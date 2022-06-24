@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view("admin/_partials/head.php") ?>
+    <?php $this->load->view("templates/head.php") ?>
 </head>
 
 <body id="page-top">
@@ -28,7 +28,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800"><?= "Table " . ucfirst($this->uri->segment(2)) ?></h1>
+                    <h1 class="h3 mb-2 text-gray-800"><?= "Table " . str_replace("_", " ", ucfirst($this->uri->segment(2))) ?></h1>
 
                     <!-- Breadcrumb -->
                     <?php $this->load->view("admin/_partials/breadcrumb.php") ?>
@@ -81,11 +81,11 @@
                                                 <td>
                                                     <?php if ($row->id != $current_user->id) : ?>
                                                         <?php if ($row->status == 0) : ?>
-                                                            <a href="<?= site_url('admin/users/setActive/' . $row->id) ?>" class="btn btn-success btn-sm">
+                                                            <a href="<?= site_url('admin/users/setActive/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-success btn-sm">
                                                                 <i class="fa-solid fa-check"></i>Aktifkan
                                                             </a>
                                                         <?php else : ?>
-                                                            <a href="<?= site_url('admin/users/setNonactive/' . $row->id) ?>" class="btn btn-danger btn-sm">
+                                                            <a href="<?= site_url('admin/users/setNonactive/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-danger btn-sm">
                                                                 <i class="fas fa-delete"></i>Nonaktifkan
                                                             </a>
                                                         <?php endif; ?>
@@ -101,7 +101,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
 
@@ -125,7 +124,7 @@
     <?php $this->load->view("admin/_partials/logout_modal.php") ?>
 
     <!-- Bootstrap core JavaScript-->
-    <?php $this->load->view("admin/_partials/js.php") ?>
+    <?php $this->load->view("templates/js.php") ?>
 
 </body>
 

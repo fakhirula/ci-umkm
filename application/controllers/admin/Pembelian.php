@@ -51,8 +51,10 @@ class Pembelian extends CI_Controller
         $validation->set_rules($pembelian->rules());
 
         if ($validation->run()) {
-            $pembelian->update();
-            $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+            if ($pembelian->update()) {
+                $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+                redirect(site_url('admin/pembelian'), 'refresh');
+            }
         } else {
             $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
         }

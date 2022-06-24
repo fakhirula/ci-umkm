@@ -51,8 +51,10 @@ class Jenis_produk extends CI_Controller
         $validation->set_rules($jproduk->rules());
 
         if ($validation->run()) {
-            $jproduk->update();
-            $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+            if ($jproduk->update()) {
+                $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+                redirect(site_url('admin/jenis_produk'), 'refresh');
+            }
         } else {
             $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
         }

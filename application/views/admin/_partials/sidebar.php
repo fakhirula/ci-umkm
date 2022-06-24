@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= site_url('admin') ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="<?= site_url('admin') ?>">
+        <a class="nav-link" href="<?= base_url('admin') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -35,11 +35,11 @@
         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item <?= $this->uri->segment(2) == 'produk' ? 'active' : '' ?>" href="<?= site_url('admin/produk') ?>">Produk</a>
-                <a class="collapse-item <?= $this->uri->segment(2) == 'jenis_produk' ? 'active' : '' ?>" href="<?= site_url('admin/jenis_produk') ?>">Jenis Produk</a>
-                <a class="collapse-item <?= $this->uri->segment(2) == 'pesanan' ? 'active' : '' ?>" href="<?= site_url('admin/pesanan') ?>">Pesanan</a>
-                <a class="collapse-item <?= $this->uri->segment(2) == 'pembelian' ? 'active' : '' ?>" href="<?= site_url('admin/pembelian') ?>">Pembelian</a>
-                <a class="collapse-item <?= $this->uri->segment(2) == 'suplier' ? 'active' : '' ?>" href="<?= site_url('admin/suplier') ?>">Suplier</a>
+                <a class="collapse-item <?= $this->uri->segment(2) == 'produk' ? 'active' : '' ?>" href="<?= base_url('admin/produk') ?>">Produk</a>
+                <a class="collapse-item <?= $this->uri->segment(2) == 'jenis_produk' ? 'active' : '' ?>" href="<?= base_url('admin/jenis_produk') ?>">Jenis Produk</a>
+                <a class="collapse-item <?= $this->uri->segment(2) == 'pesanan' ? 'active' : '' ?>" href="<?= base_url('admin/pesanan') ?>">Pesanan</a>
+                <a class="collapse-item <?= $this->uri->segment(2) == 'pembelian' ? 'active' : '' ?>" href="<?= base_url('admin/pembelian') ?>">Pembelian</a>
+                <a class="collapse-item <?= $this->uri->segment(2) == 'suplier' ? 'active' : '' ?>" href="<?= base_url('admin/suplier') ?>">Suplier</a>
             </div>
         </div>
     </li>
@@ -52,18 +52,12 @@
         Users
     </div>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed <?= $this->uri->segment(2) == 'produks' ? 'active' : '' ?>" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fa-solid fa-fw fa-users"></i>
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item <?= $this->uri->segment(2) == 'produks' ? 'active' : '' ?>">
+        <a class="nav-link" href="<?= base_url('admin/users') ?>">
+            <i class="fa-solid fa-fw fa-user-gear"></i>
             <span>Users</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="<?= site_url('admin/users') ?>">Users</a>
-            </div>
-        </div>
     </li>
 
     <!-- Divider -->
@@ -75,23 +69,11 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+    <li class="nav-item <?= $this->uri->segment(2) == 'profile' ? 'active' : '' ?>">
+        <a class="nav-link" href="<?= base_url('admin/profile') ?>">
             <i class="fa-solid fa-fw fa-user-gear"></i>
-            <span>Account</span>
+            <span>Profile</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
-            </div>
-        </div>
     </li>
 
     <!-- Divider -->

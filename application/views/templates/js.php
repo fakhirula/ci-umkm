@@ -26,4 +26,19 @@
         $('#btn-delete').attr('href', url);
         $('#deleteModal').modal();
     }
+
+    <?php if ($this->session->flashdata('alert-success')) : ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Yayy!',
+            text: '<?= $this->session->flashdata('alert-success'); ?>',
+        })
+    <?php endif; ?>
+    <?php if ($this->session->flashdata('alert-error')) : ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '<?= $this->session->flashdata('alert-error'); ?>'
+        })
+    <?php endif; ?>
 </script>

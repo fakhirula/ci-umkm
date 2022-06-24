@@ -4,6 +4,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- 
+Catatan penting:
+Gunakan /templates untuk tampilkan script head, footer dan smart-alert
+contoh: $this->load->view("templates/head.php")
+
+Gunakan /public/_partials untuk pecah file frontend
+contoh: $this->load->view("public/_partials/breadcrumb.php")
+-->
+
 <head>
 	<meta charset="utf-8">
 	<title>Welcome to CodeIgniter</title>

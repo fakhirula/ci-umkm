@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view("admin/_partials/head.php") ?>
+    <?php $this->load->view("templates/head.php") ?>
 </head>
 
 <body id="page-top">
@@ -34,7 +34,7 @@
                     <?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
                     <!-- Smart Alert -->
-                    <?php $this->load->view("admin/_partials/smart-alert.php") ?>
+                    <?php $this->load->view("templates/smart-alert.php") ?>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -86,7 +86,7 @@
     <?php $this->load->view("admin/_partials/logout_modal.php") ?>
 
     <!-- Bootstrap core JavaScript-->
-    <?php $this->load->view("admin/_partials/js.php") ?>
+    <?php $this->load->view("templates/js.php") ?>
 
 </body>
 

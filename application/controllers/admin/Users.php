@@ -31,7 +31,7 @@ class Users extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->users->setActive($this->secure->decrypt_url($id))) {
-            $this->session->set_flashdata('smart-alert', 'Data berhasil diaktifkan');
+            $this->session->set_flashdata('alert-success', 'Data berhasil diaktifkan');
             redirect(site_url('admin/users'), 'refresh');
         }
     }
@@ -41,7 +41,7 @@ class Users extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->users->setNonactive($this->secure->decrypt_url($id))) {
-            $this->session->set_flashdata('smart-alert', 'Data berhasil dinonaktifkan');
+            $this->session->set_flashdata('alert-success', 'Data berhasil dinonaktifkan');
             redirect(site_url('admin/users'), 'refresh');
         }
     }

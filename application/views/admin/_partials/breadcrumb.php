@@ -5,11 +5,11 @@
         $is_active =  $url == $this->uri->uri_string;
         ?>
 
-        <li class="breadcrumb-item <?php echo $is_active ? 'active' : '' ?>">
+        <li class="breadcrumb-item <?= $is_active ? 'active' : '' ?>">
             <?php if ($is_active) : ?>
-                <?php echo ucfirst($segment) ?>
+                <?= str_replace("_", " ", ucfirst($segment)) ?>
             <?php else : ?>
-                <a href="<?php echo site_url($url) ?>"><?php echo ucfirst($segment) ?></a>
+                <a href="<?= base_url($url) ?>"><?= str_replace("_", " ", ucfirst($segment)) ?></a>
             <?php endif; ?>
         </li>
     <?php endforeach; ?>

@@ -42,6 +42,16 @@ class Auth extends CI_Controller
         }
     }
 
+    public function registration()
+    {
+        $this->load->view('auth/register');
+    }
+
+    public function forgot_password()
+    {
+        $this->load->view('auth/forgotpassword');
+    }
+
     public function logout()
     {
         $this->auth_model->logout();
