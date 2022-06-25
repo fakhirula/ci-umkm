@@ -22,12 +22,12 @@
                             <div class="row align-items-center justify-content-between pt-3">
                                 <div class="col-auto mb-3">
                                     <h1 class="page-header-title">
-                                        <div class="page-header-icon"><i data-feather="user"></i></div>
+                                        <div class="page-header-icon"><i data-feather="truck"></i></div>
                                         <?= str_replace("_", " ", ucfirst($this->uri->segment(2))) . " List" ?>
                                     </h1>
                                 </div>
                                 <div class="col-12 col-xl-auto mb-3">
-                                    <button type="button" class="btn btn-sm btn-light text-primary" data-toggle="modal" data-target="#addModal">
+                                    <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal" data-bs-target="#addModal">
                                         <i class="me-1" data-feather="plus"></i>
                                         <?= "Add New " . str_replace("_", " ", ucfirst($this->uri->segment(2))) ?>
                                     </button>
@@ -40,6 +40,11 @@
                     <div class="page-header-content">
                         <?php $this->load->view("admin/_partials/breadcrumb.php") ?>
                     </div>
+                    <?php if ($this->session->flashdata('alert-error')) : ?>
+                        <div class="alert alert-danger mt-2" role="alert">
+                            <?= $this->session->flashdata('alert-error') ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-2">
@@ -81,8 +86,8 @@
                                             <td><?= $row->produk_id ?></td>
                                             <td><?= $row->suplier_id ?></td>
                                             <td>
-                                                <a href="<?= site_url('admin/pembelian/edit/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i data-feather="edit"></i></a>
-                                                <a onclick="deleteConfirm('<?= site_url('admin/pembelian/delete/' . $this->secure->encrypt_url($row->id)) ?>')" class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></a>
+                                                <a href="<?= site_url('admin/pembelian/edit/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-datatable btn-icon btn-warning me-2"><i data-feather="edit"></i></a>
+                                                <a onclick="confirm('Kamu yakin ingin menghapus ini?')" href="<?= site_url('admin/pembelian/delete/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-datatable btn-icon btn-danger"><i data-feather="trash-2"></i></a>
                                             </td>
                                         </tr>
                                     <?php
@@ -98,7 +103,6 @@
 
             <!-- Modal -->
             <?php $this->load->view("admin/pembelian/modal-add.php") ?>
-            <?php $this->load->view("admin/pembelian/modal-delete.php") ?>
 
             <!-- Footer -->
             <?php $this->load->view("admin/_partials/footer.php") ?>

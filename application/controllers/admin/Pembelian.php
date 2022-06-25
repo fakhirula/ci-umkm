@@ -7,6 +7,8 @@ class Pembelian extends CI_Controller
     {
         parent::__construct();
         $this->load->model('admin/pembelian_model');
+        $this->load->model('admin/produk_model');
+        $this->load->model('admin/suplier_model');
 
         // Check login information
         $current_user = $this->auth_model->current_user();
@@ -23,6 +25,8 @@ class Pembelian extends CI_Controller
     {
         $data['current_user'] = $this->auth_model->current_user();
         $data['pembelian'] = $this->pembelian_model->getAll();
+        $data['produk'] = $this->produk_model->getAll();
+        $data['suplier'] = $this->suplier_model->getAll();
         $this->load->view('admin/pembelian/index', $data);
     }
 
@@ -34,9 +38,9 @@ class Pembelian extends CI_Controller
 
         if ($validation->run()) {
             $pembelian->save();
-            $this->session->set_flashdata('smart-alert', 'Data berhasil ditambahkan');
+            $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
         } else {
-            $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
 
         redirect(site_url('admin/pembelian'));
@@ -52,15 +56,17 @@ class Pembelian extends CI_Controller
 
         if ($validation->run()) {
             if ($pembelian->update()) {
-                $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+                $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
                 redirect(site_url('admin/pembelian'), 'refresh');
             }
         } else {
-            $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
 
         $data['current_user'] = $this->auth_model->current_user();
         $data["pembelian"] = $pembelian->getById($this->secure->decrypt_url($id));
+        $data['produk'] = $this->produk_model->getAll();
+        $data['suplier'] = $this->suplier_model->getAll();
         if (!$data["pembelian"]) show_404();
 
         $this->load->view("admin/pembelian/edit", $data);
@@ -71,7 +77,7 @@ class Pembelian extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->pembelian_model->delete($this->secure->decrypt_url($id))) {
-            $this->session->set_flashdata('smart-alert', 'Data berhasil dihapus');
+            $this->session->set_flashdata('alert-success', 'Data berhasil dihapus');
             redirect(site_url('admin/pembelian'));
         }
     }

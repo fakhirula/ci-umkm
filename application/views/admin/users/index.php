@@ -22,9 +22,15 @@
                             <div class="row align-items-center justify-content-between pt-3">
                                 <div class="col-auto mb-3">
                                     <h1 class="page-header-title">
-                                        <div class="page-header-icon"><i data-feather="user"></i></div>
+                                        <div class="page-header-icon"><i data-feather="truck"></i></div>
                                         <?= str_replace("_", " ", ucfirst($this->uri->segment(2))) . " List" ?>
                                     </h1>
+                                </div>
+                                <div class="col-12 col-xl-auto mb-3">
+                                    <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal" data-bs-target="#addModal">
+                                        <i class="me-1" data-feather="plus"></i>
+                                        <?= "Add New " . str_replace("_", " ", ucfirst($this->uri->segment(2))) ?>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -34,6 +40,11 @@
                     <div class="page-header-content">
                         <?php $this->load->view("admin/_partials/breadcrumb.php") ?>
                     </div>
+                    <?php if ($this->session->flashdata('alert-error')) : ?>
+                        <div class="alert alert-danger mt-2" role="alert">
+                            <?= $this->session->flashdata('alert-error') ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <!-- Main page content-->
                 <div class="container-fluid px-4 mt-2">
@@ -101,10 +112,6 @@
                     </div>
                 </div>
             </main>
-
-            <!-- Modal -->
-            <?php $this->load->view("admin/jenis_produk/modal-add.php") ?>
-            <?php $this->load->view("admin/jenis_produk/modal-delete.php") ?>
 
             <!-- Footer -->
             <?php $this->load->view("admin/_partials/footer.php") ?>
