@@ -1,28 +1,23 @@
-<!-- Modal -->
-<div class="modal fade" id="addModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="jenisprodukLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="jenisprodukLabel">Tambah data - Modal</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
+                <h5 class="modal-title"><?= "Add " . str_replace("_", " ", ucfirst($this->uri->segment(2))) ?></h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= site_url('admin/jenis_produk/add') ?>" method="POST">
-                <div class="modal-body">
+            <div class="modal-body">
+                <form action="<?= site_url('admin/'. $this->uri->segment(2) .'/add') ?>" method="POST">
                     <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
-                    <div class="form-group mb-2 row">
-                        <label for="nama" class="col-4 col-form-label">Jenis Produk</label>
-                        <div class="col-8">
-                            <input id="nama" placeholder="Masukan Nama" name="nama" type="text" class="form-control">
-                        </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="nama">Jenis Produk</label>
+                        <input class="form-control" id="nama" name="nama" type="text" placeholder="Nama Jenis Produk" required autofocus />
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input name="submit" type="submit" class="btn btn-primary">
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button class="btn btn-transparent-dark" type="button" data-bs-dismiss="modal">Cancel</button>
+                        <input name="submit" type="submit" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

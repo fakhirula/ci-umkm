@@ -7,6 +7,7 @@ class Pesanan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('admin/pesanan_model');
+        $this->load->model('admin/produk_model');
 
         // Check login information
         $current_user = $this->auth_model->current_user();
@@ -23,6 +24,7 @@ class Pesanan extends CI_Controller
     {
         $data['current_user'] = $this->auth_model->current_user();
         $data['pesanan'] = $this->pesanan_model->getAll();
+        $data['produk'] = $this->produk_model->getAll();
         $this->load->view('admin/pesanan/index', $data);
     }
 
@@ -34,9 +36,9 @@ class Pesanan extends CI_Controller
 
         if ($validation->run()) {
             $pesanan->save();
-            $this->session->set_flashdata('smart-alert', 'Data berhasil ditambahkan');
+            $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
         } else {
-            $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
 
         redirect(site_url('admin/pesanan'));
@@ -52,15 +54,16 @@ class Pesanan extends CI_Controller
 
         if ($validation->run()) {
             if ($pesanan->update()) {
-                $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+                $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
                 redirect(site_url('admin/pesanan'), 'refresh');
             }
         } else {
-            $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
 
         $data['current_user'] = $this->auth_model->current_user();
         $data["pesanan"] = $pesanan->getById($this->secure->decrypt_url($id));
+        $data['produk'] = $this->produk_model->getAll();
         if (!$data["pesanan"]) show_404();
 
         $this->load->view("admin/pesanan/edit", $data);
@@ -70,8 +73,8 @@ class Pesanan extends CI_Controller
     {
         if (!isset($id)) show_404();
 
-        if ($this->pesanan_model->delete($id)) {
-            $this->session->set_flashdata('smart-alert', 'Data berhasil dihapus');
+        if ($this->pesanan_model->delete($this->secure->decrypt_url($id))) {
+            $this->session->set_flashdata('alert-success', 'Data berhasil dihapus');
             redirect(site_url('admin/pesanan'));
         }
     }

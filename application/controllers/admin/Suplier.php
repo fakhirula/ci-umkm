@@ -34,9 +34,9 @@ class Suplier extends CI_Controller
 
         if ($validation->run()) {
             $suplier->save();
-            $this->session->set_flashdata('smart-alert', 'Data berhasil ditambahkan');
+            $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
         } else {
-            $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
 
         redirect(site_url('admin/suplier'));
@@ -52,11 +52,11 @@ class Suplier extends CI_Controller
 
         if ($validation->run()) {
             if ($suplier->update()) {
-                $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+                $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
                 redirect(site_url('admin/suplier'), 'refresh');
             }
         } else {
-            $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
 
         $data['current_user'] = $this->auth_model->current_user();
@@ -70,8 +70,8 @@ class Suplier extends CI_Controller
     {
         if (!isset($id)) show_404();
 
-        if ($this->suplier_model->delete($id)) {
-            $this->session->set_flashdata('smart-alert', 'Data berhasil dihapus');
+        if ($this->suplier_model->delete($this->secure->decrypt_url($id))) {
+            $this->session->set_flashdata('alert-success', 'Data berhasil dihapus');
             redirect(site_url('admin/suplier'));
         }
     }

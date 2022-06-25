@@ -5,113 +5,114 @@
     <?php $this->load->view("templates/head.php") ?>
 </head>
 
-<body id="page-top">
+<body class="nav-fixed">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+    <!-- Navbar -->
+    <?php $this->load->view("admin/_partials/navbar.php") ?>
+
+    <div id="layoutSidenav">
 
         <!-- Sidebar -->
         <?php $this->load->view("admin/_partials/sidebar.php") ?>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <?php $this->load->view("admin/_partials/navbar.php") ?>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800"><?= "Data ke " . ucfirst($this->uri->segment(4)) ?></h1>
-
-                    <!-- Breadcrumb -->
-                    <?php $this->load->view("admin/_partials/breadcrumb.php") ?>
-
-                    <!-- Smart Alert -->
-                    <?php $this->load->view("templates/smart-alert.php") ?>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+        <div id="layoutSidenav_content">
+            <main>
+                <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-3">
+                    <div class="container-fluid px-4">
+                        <div class="page-header-content">
+                            <div class="row align-items-center justify-content-between pt-3">
+                                <div class="col-auto mb-3">
+                                    <h1 class="page-header-title">
+                                        <div class="page-header-icon"><i data-feather="truck"></i></div>
+                                        <?= "Edit " . str_replace("_", " ", ucfirst($this->uri->segment(2))) ?>
+                                    </h1>
+                                </div>
+                                <div class="col-12 col-xl-auto mb-3">
+                                    <a class="btn btn-sm btn-light text-primary" href="<?= base_url('admin/' . $this->uri->segment(2)) ?>">
+                                        <i class="me-1" data-feather="arrow-left"></i>
+                                        <?= "Back to " . str_replace("_", " ", ucfirst($this->uri->segment(2))) . " List" ?>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <form action="" method="POST">
-                            <div class="modal-body">
-                                <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
-                                <div class="form-group mb-2 row">
-                                    <label for="id" class="col-4 col-form-label">ID</label>
-                                    <div class="col-8">
-                                        <input id="id" value="<?= $suplier->id ?>" name="id" type="number" class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-2 row">
-                                    <label for="nama" class="col-4 col-form-label">Nama</label>
-                                    <div class="col-8">
-                                        <input id="nama" value="<?= $suplier->nama ?>" placeholder="Masukan Nama" name="nama" type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group mb-2 row">
-                                    <label for="kota" class="col-4 col-form-label">Kota</label>
-                                    <div class="col-8">
-                                        <input id="kota" value="<?= $suplier->kota ?>" placeholder="Masukan Kota" name="kota" type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group mb-2 row">
-                                    <label for="kontak" class="col-4 col-form-label">Kontak</label>
-                                    <div class="col-8">
-                                        <input id="kontak" value="<?= $suplier->kontak ?>" placeholder="Masukan Kontak" name="kontak" type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group mb-2 row">
-                                    <label for="alamat" class="col-4 col-form-label">Alamat</label>
-                                    <div class="col-8">
-                                        <input id="alamat" value="<?= $suplier->alamat ?>" placeholder="Masukan Alamat" name="alamat" type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group mb-2 row">
-                                    <label for="telpon" class="col-4 col-form-label">Telpon</label>
-                                    <div class="col-8">
-                                        <input id="telpon" value="<?= $suplier->telpon ?>" placeholder="Masukan Telpon" name="telpon" type="text" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="<?= site_url('admin/suplier') ?>" type="button" class="btn btn-secondary">Close</a>
-                                <input name="submit" type="submit" class="btn btn-primary">
-                            </div>
-                        </form>
                     </div>
-
+                </header>
+                <!-- Main page content-->
+                <div class="container-xl px-4 mt-4">
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <!-- Profile picture card-->
+                            <div class="card mb-4 mb-xl-0">
+                                <div class="card-header">Perhatikan!</div>
+                                <div class="card-body">
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0">Wajib mengisi semua field.</li>
+                                        <li class="list-group-item border-0">Mohon isi field dengan data yang sebenar-benarnya.</li>
+                                        <li class="list-group-item border-0">Perhatikan instruksi jika terjadi kesalahan.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8">
+                            <div class="card mb-4">
+                                <div class="card-header"><?= str_replace("_", " ", ucfirst($this->uri->segment(2))) . " Details" ?></div>
+                                <div class="card-body">
+                                    <form action="" method="POST">
+                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
+                                        <input id="id" name="id" type="hidden" value="<?= $suplier->id ?>" required readonly />
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="nama">Nama Perusahaan</label>
+                                            <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" id="nama" name="nama" type="text" value="<?= $suplier->nama ?>" required />
+                                            <div class="invalid-feedback">
+                                                <?php echo form_error('nama') ?>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="kota">Kota</label>
+                                            <input class="form-control <?php echo form_error('kota') ? 'is-invalid' : '' ?>" id="kota" name="kota" type="text" value="<?= $suplier->kota ?>" required />
+                                            <div class="invalid-feedback">
+                                                <?php echo form_error('kota') ?>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="kontak">Kontak</label>
+                                            <input class="form-control <?php echo form_error('kontak') ? 'is-invalid' : '' ?>" id="kontak" name="kontak" type="text" value="<?= $suplier->kontak ?>" required />
+                                            <div class="invalid-feedback">
+                                                <?php echo form_error('kontak') ?>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="alamat">Alamat</label>
+                                            <input class="form-control <?php echo form_error('alamat') ? 'is-invalid' : '' ?>" id="alamat" name="alamat" type="text" value="<?= $suplier->alamat ?>" required />
+                                            <div class="invalid-feedback">
+                                                <?php echo form_error('alamat') ?>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="telpon">Telpon</label>
+                                            <input class="form-control <?php echo form_error('telpon') ? 'is-invalid' : '' ?>" id="telpon" name="telpon" type="text" value="<?= $suplier->telpon ?>" required />
+                                            <div class="invalid-feedback">
+                                                <?php echo form_error('telpon') ?>
+                                            </div>
+                                        </div>
+                                        <!-- Submit button-->
+                                        <input name="submit" type="submit" class="btn btn-primary">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.container-fluid -->
+            </main>
 
-            </div>
-            <!-- End of Main Content -->
+            <!-- Modal -->
+            <?php $this->load->view("admin/suplier/modal-add.php") ?>
 
             <!-- Footer -->
             <?php $this->load->view("admin/_partials/footer.php") ?>
-            <!-- End of Footer -->
 
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <?php $this->load->view("admin/_partials/scroll_top.php") ?>
-
-    <!-- Logout Modal-->
-    <?php $this->load->view("admin/_partials/logout_modal.php") ?>
-
-    <!-- Bootstrap core JavaScript-->
     <?php $this->load->view("templates/js.php") ?>
-
 </body>
 
 </html>

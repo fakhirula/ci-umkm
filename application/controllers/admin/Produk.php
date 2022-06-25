@@ -7,6 +7,7 @@ class Produk extends CI_Controller
     {
         parent::__construct();
         $this->load->model('admin/produk_model');
+        $this->load->model('admin/jenisproduk_model');
 
         // Check login information
         $current_user = $this->auth_model->current_user();
@@ -23,6 +24,7 @@ class Produk extends CI_Controller
     {
         $data['current_user'] = $this->auth_model->current_user();
         $data['produk'] = $this->produk_model->getAll();
+        $data['jenis_produk'] = $this->jenisproduk_model->getAll();
         $this->load->view('admin/produk/index', $data);
     }
 
@@ -30,13 +32,14 @@ class Produk extends CI_Controller
     {
         $produk = $this->produk_model;
         $validation = $this->form_validation;
-        $validation->set_rules($produk->rules());
+        $this->form_validation->set_rules($produk->rules());
+        $this->form_validation->set_rules('kode', 'Kode', 'required|min_length[3]|max_length[4]|is_unique[produk.kode]');
 
-        if ($validation->run()) {
+        if ($this->form_validation->run()) {
             $produk->save();
-            $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
+            $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
         } else {
-            $this->session->set_flashdata('input-error', validation_errors('[invalid]: '));
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
 
         redirect(site_url('admin/produk'));
@@ -56,11 +59,12 @@ class Produk extends CI_Controller
                 redirect(site_url('admin/produk'), 'refresh');
             }
         } else {
-            $this->session->set_flashdata('input-error', validation_errors('[invalid]: '));
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
 
         $data['current_user'] = $this->auth_model->current_user();
         $data["produk"] = $produk->getById($this->secure->decrypt_url($id));
+        $data['jenis_produk'] = $this->jenisproduk_model->getAll();
         if (!$data["produk"]) show_404();
 
         $this->load->view("admin/produk/edit", $data);
@@ -70,7 +74,7 @@ class Produk extends CI_Controller
     {
         if (!isset($id)) show_404();
 
-        if ($this->produk_model->delete($id)) {
+        if ($this->produk_model->delete($this->secure->decrypt_url($id))) {
             $this->session->set_flashdata('alert-success', 'Data berhasil dihapus');
             redirect(site_url('admin/produk'));
         }

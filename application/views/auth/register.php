@@ -5,66 +5,73 @@
     <?php $this->load->view("templates/head.php") ?>
 </head>
 
-<body class="bg-gradient-primary">
-
-    <div class="container">
-
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-md-6">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container-xl px-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <!-- Basic registration form-->
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header justify-content-center">
+                                    <h3 class="fw-light my-3">Create an Account!</h3>
+                                </div>
+                                <?php if ($this->session->flashdata('message_login_error')) : ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?= $this->session->flashdata('message_login_error'); ?>
                                     </div>
-                                    <form class="user" method="POST" action="<?= base_url('auth/registration') ?>">
+                                <?php endif; ?>
+                                <div class="card-body">
+                                    <!-- Registration form-->
+                                    <form method="POST" action="<?= base_url('auth/registration') ?>">
                                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" name="username" id="username" placeholder="Username" autofocus>
+                                        <!-- Form Row-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputUsername">Username</label>
+                                            <input class="form-control" id="inputUsername" type="text" aria-describedby="Username" placeholder="Enter username" required autofocus/>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Email Address" autofocus>
+                                        <!-- Form Group (email address)            -->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                            <input class="form-control" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" required autofocus/>
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password" autofocus>
+                                        <!-- Form Row    -->
+                                        <div class="row gx-3">
+                                            <div class="col-md-6">
+                                                <!-- Form Group (password)-->
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="inputPassword">Password</label>
+                                                    <input class="form-control" id="inputPassword" type="password" placeholder="Enter password" required autofocus/>
+                                                </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <input type="password" class="form-control form-control-user" name="password-repeat" id="password-repeat" placeholder="Repeat Password" autofocus>
+                                            <div class="col-md-6">
+                                                <!-- Form Group (confirm password)-->
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
+                                                    <input class="form-control" id="inputConfirmPassword" type="password" placeholder="Confirm password" required autofocus/>
+                                                </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            Register Account
-                                        </button>
+                                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="<?= base_url('auth/forgot_password') ?>">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="<?= base_url('auth/login') ?>">Already have an account? Login!</a>
-                                    </div>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <div class="small"><a href="<?= base_url('auth/login') ?>">Have an account? Go to login</a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-            </div>
-
+            </main>
         </div>
-
+        <div id="layoutAuthentication_footer">
+            <!-- Footer -->
+            <?php $this->load->view("admin/_partials/footer.php") ?>
+        </div>
     </div>
-
     <!-- Bootstrap core JavaScript-->
     <?php $this->load->view("templates/js.php") ?>
-
 </body>
 
 </html>

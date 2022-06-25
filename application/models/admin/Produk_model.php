@@ -8,6 +8,11 @@ class Produk_model extends CI_Model
     {
         return [
             [
+                'field' => 'kode',
+                'label' => 'Kode',
+                'rules' => 'required|min_length[3]|max_length[4]'
+            ],
+            [
                 'field' => 'nama',
                 'label' => 'Nama',
                 'rules' => 'required|min_length[4]|max_length[45]'
@@ -35,7 +40,7 @@ class Produk_model extends CI_Model
             [
                 'field' => 'jenis_id',
                 'label' => 'Jenis_id',
-                'rules' => 'required|integer'
+                'rules' => 'required'
             ],
             [
                 'field' => 'deskripsi',
@@ -59,6 +64,7 @@ class Produk_model extends CI_Model
     public function save()
     {
         $post = $this->input->post();
+        $this->kode = $post['kode'];
         $this->nama = $post['nama'];
         $this->stok = $post['stok'];
         $this->harga_beli = $post['harga_beli'];
@@ -74,6 +80,7 @@ class Produk_model extends CI_Model
     {
         $post = $this->input->post();
         $this->id = $post['id'];
+        $this->kode = $post['kode'];
         $this->nama = $post['nama'];
         $this->stok = $post['stok'];
         $this->harga_beli = $post['harga_beli'];

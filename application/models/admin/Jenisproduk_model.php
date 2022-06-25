@@ -26,6 +26,11 @@ class Jenisproduk_model extends CI_Model
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
 
+    public function getByName($id)
+    {
+        return $this->db->get_where($this->table, ['nama' => $id])->row();
+    }
+
     public function save()
     {
         $post = $this->input->post();

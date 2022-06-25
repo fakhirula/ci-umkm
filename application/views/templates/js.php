@@ -1,23 +1,15 @@
-<!-- Bootstrap core JavaScript-->
-<script src="<?= base_url('assets/vendor/jquery/jquery.min.js') ?>"></script>
-<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="<?= base_url('assets/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
-
-<!-- Page level plugins -->
-<script src="<?= base_url('assets/vendor/chart.js/Chart.min.js') ?>"></script>
-<script src="<?= base_url('assets/vendor/datatables/jquery.dataTables.min.js') ?>"></script>
-<script src="<?= base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
-
-<!-- Page level custom scripts -->
-<script src="<?= base_url('assets/js/demo/chart-area-demo.js') ?>"></script>
-<script src="<?= base_url('assets/js/demo/chart-pie-demo.js') ?>"></script>
-<script src="<?= base_url('assets/js/demo/datatables-demo.js') ?>"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="<?= base_url('assets/js/scripts.js') ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
+<script src="<?= base_url('assets/vendor/demo/chart-area-demo.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/demo/chart-bar-demo.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/demo/chart-pie-demo.js') ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
+<script src="<?= base_url('assets/js/litepicker.js') ?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="<?= base_url('assets/js/datatables/datatables-simple-demo.js') ?>"></script>
 <!-- Custom icons -->
 <script src="https://kit.fontawesome.com/b32963d457.js" crossorigin="anonymous"></script>
 
@@ -32,13 +24,6 @@
             icon: 'success',
             title: 'Yayy!',
             text: '<?= $this->session->flashdata('alert-success'); ?>',
-        })
-    <?php endif; ?>
-    <?php if ($this->session->flashdata('alert-error')) : ?>
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: '<?= $this->session->flashdata('alert-error'); ?>'
         })
     <?php endif; ?>
 </script>

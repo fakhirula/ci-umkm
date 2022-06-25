@@ -89,7 +89,7 @@ class CI_Controller {
 
 		// Custom Controller
 		$this->load->model('auth_model');
-		$this->load->helper(array('form', 'url'));
+		$this->load->helper(array('form', 'url', 'date'));
 		$this->load->library(array('form_validation', 'secure'));
 	}
 

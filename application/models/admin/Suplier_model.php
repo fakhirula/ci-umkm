@@ -20,12 +20,12 @@ class Suplier_model extends CI_Model
             [
                 'field' => 'kontak',
                 'label' => 'Kontak',
-                'rules' => 'required|max_length[30]'
+                'rules' => 'required|min_length[5]|max_length[30]'
             ],
             [
                 'field' => 'alamat',
                 'label' => 'Alamat',
-                'rules' => 'required|min_length[4]|max_length[200]'
+                'rules' => 'required|min_length[5]|max_length[200]'
             ],
             [
                 'field' => 'telpon',

@@ -5,133 +5,107 @@
     <?php $this->load->view("templates/head.php") ?>
 </head>
 
-<body id="page-top">
+<body class="nav-fixed">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+    <!-- Navbar -->
+    <?php $this->load->view("admin/_partials/navbar.php") ?>
+
+    <div id="layoutSidenav">
 
         <!-- Sidebar -->
         <?php $this->load->view("admin/_partials/sidebar.php") ?>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <?php $this->load->view("admin/_partials/navbar.php") ?>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Breadcrumb -->
-                    <?php $this->load->view("admin/_partials/breadcrumb.php") ?>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <div class="row align-items-center">
-                                <div class="col-sm-6">
-                                    <h1 class="m-0 h5 text-gray-800"><?= "Table " . str_replace("_", " ", ucfirst($this->uri->segment(2))) ?></h1>
+        <div id="layoutSidenav_content">
+            <main>
+                <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-3">
+                    <div class="container-fluid px-4">
+                        <div class="page-header-content">
+                            <div class="row align-items-center justify-content-between pt-3">
+                                <div class="col-auto mb-3">
+                                    <h1 class="page-header-title">
+                                        <div class="page-header-icon"><i data-feather="user"></i></div>
+                                        <?= str_replace("_", " ", ucfirst($this->uri->segment(2))) . " List" ?>
+                                    </h1>
                                 </div>
-                                <div class="col-sm-6">
-                                    <button type="button" class="float-sm-right btn btn-success btn-icon-split" data-toggle="modal" data-target="#addModal">
-                                        <span class="icon text-white-50">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </span>
-                                        <span class="text">Tambah Data</span>
+                                <div class="col-12 col-xl-auto mb-3">
+                                    <button type="button" class="btn btn-sm btn-light text-primary" data-toggle="modal" data-target="#addModal">
+                                        <i class="me-1" data-feather="plus"></i>
+                                        <?= "Add New " . str_replace("_", " ", ucfirst($this->uri->segment(2))) ?>
                                     </button>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </header>
+                <div class="container-fluid px-4">
+                    <div class="page-header-content">
+                        <?php $this->load->view("admin/_partials/breadcrumb.php") ?>
+                    </div>
+                </div>
+                <!-- Main page content-->
+                <div class="container-fluid px-4 mt-2">
+                    <div class="card">
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>Tanggal</th>
+                                        <th>Jumlah</th>
+                                        <th>Harga</th>
+                                        <th>Produk ID</th>
+                                        <th>Suplier ID</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>Tanggal</th>
+                                        <th>Jumlah</th>
+                                        <th>Harga</th>
+                                        <th>Produk ID</th>
+                                        <th>Suplier ID</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <?php
+                                    $id = 1;
+                                    foreach ($pembelian as $row) :
+                                    ?>
                                         <tr>
-                                            <th>NO</th>
-                                            <th>Tanggal</th>
-                                            <th>Jumlah</th>
-                                            <th>Harga</th>
-                                            <th>Produk ID</th>
-                                            <th>Suplier ID</th>
-                                            <th>Action</th>
+                                            <td><?= $id ?></td>
+                                            <td><?= $row->tanggal ?></td>
+                                            <td><?= $row->jumlah ?></td>
+                                            <td><?= $row->harga ?></td>
+                                            <td><?= $row->produk_id ?></td>
+                                            <td><?= $row->suplier_id ?></td>
+                                            <td>
+                                                <a href="<?= site_url('admin/pembelian/edit/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i data-feather="edit"></i></a>
+                                                <a onclick="deleteConfirm('<?= site_url('admin/pembelian/delete/' . $this->secure->encrypt_url($row->id)) ?>')" class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></a>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>NO</th>
-                                            <th>Tanggal</th>
-                                            <th>Jumlah</th>
-                                            <th>Harga</th>
-                                            <th>Produk ID</th>
-                                            <th>Suplier ID</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php
-                                        $id = 1;
-                                        foreach ($pembelian as $row) :
-                                        ?>
-                                            <tr>
-                                                <td><?= $id ?></td>
-                                                <td><?= $row->tanggal ?></td>
-                                                <td><?= $row->jumlah ?></td>
-                                                <td><?= $row->harga ?></td>
-                                                <td><?= $row->produk_id ?></td>
-                                                <td><?= $row->suplier_id ?></td>
-                                                <td>
-                                                    <a href="<?= site_url('admin/pembelian/edit/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-warning btn-circle btn-sm">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
-                                                    <a onclick="deleteConfirm('<?= site_url('admin/pembelian/delete/' . $this->secure->encrypt_url($row->id)) ?>')" class="btn btn-danger btn-circle btn-sm">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <?php
-                                            $id++;
-                                        endforeach;
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <?php
+                                        $id++;
+                                    endforeach;
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
+            </main>
 
-            </div>
-            <!-- End of Main Content -->
+            <!-- Modal -->
+            <?php $this->load->view("admin/pembelian/modal-add.php") ?>
+            <?php $this->load->view("admin/pembelian/modal-delete.php") ?>
 
             <!-- Footer -->
             <?php $this->load->view("admin/_partials/footer.php") ?>
-            <!-- End of Footer -->
 
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Modal -->
-    <?php $this->load->view("admin/pembelian/modal-add.php") ?>
-    <?php $this->load->view("admin/pembelian/modal-delete.php") ?>
-
-    <!-- Scroll to Top Button-->
-    <?php $this->load->view("admin/_partials/scroll_top.php") ?>
-
-    <!-- Logout Modal-->
-    <?php $this->load->view("admin/_partials/logout_modal.php") ?>
-
-    <!-- Bootstrap core JavaScript-->
     <?php $this->load->view("templates/js.php") ?>
-
 </body>
 
 </html>

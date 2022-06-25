@@ -34,9 +34,9 @@ class Jenis_produk extends CI_Controller
 
         if ($validation->run()) {
             $jproduk->save();
-            $this->session->set_flashdata('smart-alert', 'Data berhasil ditambahkan');
+            $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
         } else {
-            $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
 
         redirect(site_url('admin/jenis_produk'));
@@ -52,11 +52,11 @@ class Jenis_produk extends CI_Controller
 
         if ($validation->run()) {
             if ($jproduk->update()) {
-                $this->session->set_flashdata('smart-alert', 'Data berhasil diedit');
+                $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
                 redirect(site_url('admin/jenis_produk'), 'refresh');
             }
         } else {
-            $this->session->set_flashdata('smart-alert-error', validation_errors('[invalid]: '));
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
 
         $data['current_user'] = $this->auth_model->current_user();
@@ -70,8 +70,8 @@ class Jenis_produk extends CI_Controller
     {
         if (!isset($id)) show_404();
 
-        if ($this->jenisproduk_model->delete($id)) {
-            $this->session->set_flashdata('smart-alert', 'Data berhasil dihapus');
+        if ($this->jenisproduk_model->delete($this->secure->decrypt_url($id))) {
+            $this->session->set_flashdata('alert-success', 'Data berhasil dihapus');
             redirect(site_url('admin/jenis_produk'));
         }
     }

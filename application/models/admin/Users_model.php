@@ -10,7 +10,7 @@ class Users_model extends CI_Model
             [
                 'field' => 'username',
                 'label' => 'username',
-                'rules' => 'required|min_length[5]'
+                'rules' => 'required|min_length[5]|is_unique[users.username]'
             ],
             [
                 'field' => 'password',

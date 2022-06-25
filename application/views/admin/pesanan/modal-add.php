@@ -1,46 +1,40 @@
-<!-- Modal -->
-<div class="modal fade" id="addModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="jenisprodukLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="jenisprodukLabel">Tambah data - Modal</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
+                <h5 class="modal-title"><?= "Add " . str_replace("_", " ", ucfirst($this->uri->segment(2))) ?></h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= site_url('admin/pesanan/add') ?>" method="POST">
-                <div class="modal-body">
+            <div class="modal-body">
+                <form action="<?= site_url('admin/' . $this->uri->segment(2) . '/add') ?>" method="POST">
                     <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
-                    <div class="form-group mb-2 row">
-                        <label for="tanggal" class="col-4 col-form-label">Tanggal</label>
-                        <div class="col-8">
-                            <input id="tanggal" placeholder="Masukan Tanggal" name="tanggal" type="date" class="form-control">
-                        </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="tanggal">Tanggal</label>
+                        <input class="form-control" id="tanggal" name="tanggal" type="date" placeholder="Tanggal" required autofocus />
                     </div>
-                    <div class="form-group mb-2 row">
-                        <label for="jumlah" class="col-4 col-form-label">Jumlah</label>
-                        <div class="col-8">
-                            <input id="jumlah" placeholder="Masukan Jumlah" name="jumlah" type="number" class="form-control">
-                        </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="jumlah">Jumlah Pesanan</label>
+                        <input class="form-control" id="jumlah" name="jumlah" type="number" placeholder="Jumlah Pesanan" required autofocus />
                     </div>
-                    <div class="form-group mb-2 row">
-                        <label for="users_id" class="col-4 col-form-label">Users_id</label>
-                        <div class="col-8">
-                            <input id="users_id" placeholder="Masukan Users_id" name="users_id" type="number" class="form-control">
-                        </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="users_id">Users ID</label>
+                        <input class="form-control" value="<?= $current_user->id; ?>" id="users_id" name="users_id" type="number" required readonly />
                     </div>
-                    <div class="form-group mb-2 row">
-                        <label for="produk_id" class="col-4 col-form-label">Produk_id</label>
-                        <div class="col-8">
-                            <input id="produk_id" placeholder="Masukan Produk_id" name="produk_id" type="number" class="form-control">
-                        </div>
+                    <div class="mb-3">
+                        <label class="small mb-1" for="produk_id">Produk ID</label>
+                        <select id="produk_id" name="produk_id" class="form-select" aria-label="Default select example">
+                            <option selected disabled>Pilih Produk ID:</option>
+                            <?php foreach ($produk as $row) : ?>
+                                <option value="<?= $row->id; ?>"><?= $row->nama; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input name="submit" type="submit" class="btn btn-primary">
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button class="btn btn-transparent-dark" type="button" data-bs-dismiss="modal">Cancel</button>
+                        <input name="submit" type="submit" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

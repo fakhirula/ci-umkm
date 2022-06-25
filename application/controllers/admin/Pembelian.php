@@ -70,7 +70,7 @@ class Pembelian extends CI_Controller
     {
         if (!isset($id)) show_404();
 
-        if ($this->pembelian_model->delete($id)) {
+        if ($this->pembelian_model->delete($this->secure->decrypt_url($id))) {
             $this->session->set_flashdata('smart-alert', 'Data berhasil dihapus');
             redirect(site_url('admin/pembelian'));
         }
