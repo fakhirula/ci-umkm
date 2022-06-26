@@ -30,7 +30,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="small mb-1" for="foto">Foto</label>
-                        <input class="form-control" id="foto" name="foto" type="file" required autofocus />
+                        <input class="form-control" id="foto" name="foto" type="file" accept="image/png, image/jpeg, image/jpg" required autofocus />
                     </div>
                     <div class="mb-3">
                         <label class="small mb-1">Jenis Produk</label>

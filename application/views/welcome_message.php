@@ -1,124 +1,266 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- 
-Catatan penting:
-Gunakan /templates untuk tampilkan script head, footer dan smart-alert
-contoh: $this->load->view("templates/head.php")
-
-Gunakan /public/_partials untuk pecah file frontend
-contoh: $this->load->view("public/_partials/breadcrumb.php")
--->
-
 <head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
-
-	<style type="text/css">
-		::selection {
-			background-color: #E13300;
-			color: white;
-		}
-
-		::-moz-selection {
-			background-color: #E13300;
-			color: white;
-		}
-
-		body {
-			background-color: #fff;
-			margin: 40px;
-			font: 13px/20px normal Helvetica, Arial, sans-serif;
-			color: #4F5155;
-		}
-
-		a {
-			color: #003399;
-			background-color: transparent;
-			font-weight: normal;
-			text-decoration: none;
-		}
-
-		a:hover {
-			color: #97310e;
-		}
-
-		h1 {
-			color: #444;
-			background-color: transparent;
-			border-bottom: 1px solid #D0D0D0;
-			font-size: 19px;
-			font-weight: normal;
-			margin: 0 0 14px 0;
-			padding: 14px 15px 10px 15px;
-		}
-
-		code {
-			font-family: Consolas, Monaco, Courier New, Courier, monospace;
-			font-size: 12px;
-			background-color: #f9f9f9;
-			border: 1px solid #D0D0D0;
-			color: #002166;
-			display: block;
-			margin: 14px 0 14px 0;
-			padding: 12px 10px 12px 10px;
-		}
-
-		#body {
-			margin: 0 15px 0 15px;
-			min-height: 96px;
-		}
-
-		p {
-			margin: 0 0 10px;
-			padding: 0;
-		}
-
-		p.footer {
-			text-align: right;
-			font-size: 11px;
-			border-top: 1px solid #D0D0D0;
-			line-height: 32px;
-			padding: 0 10px 0 10px;
-			margin: 20px 0 0 0;
-		}
-
-		#container {
-			margin: 10px;
-			border: 1px solid #D0D0D0;
-			box-shadow: 0 0 8px #D0D0D0;
-		}
-	</style>
+	<?php $this->load->view('templates/head.php') ?>
 </head>
 
 <body>
-
-	<div id="container">
-		<?php if ($current_user) : ?>
-			<div class="alert alert-danger" role="alert">
-				<?= htmlentities($current_user->email) ?> : <?= htmlentities($current_user->role) ?>
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container px-4 px-lg-5">
+			<a class="navbar-brand" href="#!">Start Bootstrap</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+					<li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="#!">All Products</a></li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li><a class="dropdown-item" href="#!">Popular Items</a></li>
+							<li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+						</ul>
+					</li>
+				</ul>
+				<form class="d-flex">
+					<button class="btn btn-outline-dark" type="submit">
+						<i class="bi-cart-fill me-1"></i>
+						Cart
+						<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+					</button>
+				</form>
 			</div>
-		<?php endif; ?>
-		<h1>Welcome to CodeIgniter!</h1>
-
-		<div id="body">
-			<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-			<p>If you would like to edit this page you'll find it located at:</p>
-			<code>application/views/welcome_message.php</code>
-
-			<p>The corresponding controller for this page is found at:</p>
-			<code>application/controllers/Welcome.php</code>
-
-			<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="userguide3/">User Guide</a>.</p>
 		</div>
-
-		<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-	</div>
-
+	</nav>
+	<!-- Header-->
+	<header class="bg-dark py-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="text-center text-white">
+				<h1 class="display-4 fw-bolder">Shop in style</h1>
+				<p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+			</div>
+		</div>
+	</header>
+	<!-- Section-->
+	<section class="py-5">
+		<div class="container px-4 px-lg-5 mt-5">
+			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				<div class="col mb-5">
+					<div class="card h-100">
+						<!-- Product image-->
+						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">Fancy Product</h5>
+								<!-- Product price-->
+								$40.00 - $80.00
+							</div>
+						</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="col mb-5">
+					<div class="card h-100">
+						<!-- Sale badge-->
+						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+						<!-- Product image-->
+						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">Special Item</h5>
+								<!-- Product reviews-->
+								<div class="d-flex justify-content-center small text-warning mb-2">
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+								</div>
+								<!-- Product price-->
+								<span class="text-muted text-decoration-line-through">$20.00</span>
+								$18.00
+							</div>
+						</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="col mb-5">
+					<div class="card h-100">
+						<!-- Sale badge-->
+						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+						<!-- Product image-->
+						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">Sale Item</h5>
+								<!-- Product price-->
+								<span class="text-muted text-decoration-line-through">$50.00</span>
+								$25.00
+							</div>
+						</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="col mb-5">
+					<div class="card h-100">
+						<!-- Product image-->
+						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">Popular Item</h5>
+								<!-- Product reviews-->
+								<div class="d-flex justify-content-center small text-warning mb-2">
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+								</div>
+								<!-- Product price-->
+								$40.00
+							</div>
+						</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="col mb-5">
+					<div class="card h-100">
+						<!-- Sale badge-->
+						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+						<!-- Product image-->
+						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">Sale Item</h5>
+								<!-- Product price-->
+								<span class="text-muted text-decoration-line-through">$50.00</span>
+								$25.00
+							</div>
+						</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="col mb-5">
+					<div class="card h-100">
+						<!-- Product image-->
+						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">Fancy Product</h5>
+								<!-- Product price-->
+								$120.00 - $280.00
+							</div>
+						</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="col mb-5">
+					<div class="card h-100">
+						<!-- Sale badge-->
+						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+						<!-- Product image-->
+						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">Special Item</h5>
+								<!-- Product reviews-->
+								<div class="d-flex justify-content-center small text-warning mb-2">
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+								</div>
+								<!-- Product price-->
+								<span class="text-muted text-decoration-line-through">$20.00</span>
+								$18.00
+							</div>
+						</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+						</div>
+					</div>
+				</div>
+				<div class="col mb-5">
+					<div class="card h-100">
+						<!-- Product image-->
+						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+						<!-- Product details-->
+						<div class="card-body p-4">
+							<div class="text-center">
+								<!-- Product name-->
+								<h5 class="fw-bolder">Popular Item</h5>
+								<!-- Product reviews-->
+								<div class="d-flex justify-content-center small text-warning mb-2">
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+									<div class="bi-star-fill"></div>
+								</div>
+								<!-- Product price-->
+								$40.00
+							</div>
+						</div>
+						<!-- Product actions-->
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Footer-->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 small">Copyright &copy; <?php echo SITE_NAME . " " . Date('Y') ?></div>
+				<div class="col-md-6 text-md-end small">
+					<p>Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<?php $this->load->view('templates/js.php') ?>
 </body>
 
 </html>

@@ -54,4 +54,4 @@ $route['404_override'] = 'Page404';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['admin'] = 'admin/overview';
-// $route['login'] = 'auth/login';
+$route['produk'] = 'public/produk';

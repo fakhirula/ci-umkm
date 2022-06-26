@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 23, 2022 at 03:36 PM
+-- Generation Time: Jun 26, 2022 at 02:45 PM
 -- Server version: 8.0.29
 -- PHP Version: 8.0.20
 
@@ -40,8 +40,7 @@ INSERT INTO `jenis_produk` (`id`, `nama`) VALUES
 (1, 'Tas'),
 (2, 'Sepatu'),
 (3, 'Perhiasan'),
-(4, 'Busana Muslimah'),
-(13, 'Fakhirul Akmal');
+(4, 'Busana Muslimah');
 
 -- --------------------------------------------------------
 
@@ -64,8 +63,7 @@ CREATE TABLE `pembelian` (
 
 INSERT INTO `pembelian` (`id`, `tanggal`, `jumlah`, `harga`, `produk_id`, `suplier_id`) VALUES
 (1, '2022-06-12', 20, 100000, 1, 1),
-(2, '2022-06-12', 50, 30000, 2, 2),
-(3, '2022-06-15', 123, 222, 1, 1);
+(2, '2022-06-12', 50, 30000, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -86,8 +84,7 @@ CREATE TABLE `pesanan` (
 --
 
 INSERT INTO `pesanan` (`id`, `tanggal`, `jumlah`, `users_id`, `produk_id`) VALUES
-(1, '2022-06-12', 1, 2, 2),
-(2, '2022-06-16', 111111, 1, 1);
+(1, '2022-06-12', 1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -113,8 +110,7 @@ CREATE TABLE `produk` (
 
 INSERT INTO `produk` (`id`, `kode`, `nama`, `stok`, `harga_beli`, `harga_jual`, `foto`, `jenis_id`, `deskripsi`) VALUES
 (1, 'T001', 'Tas Trendy', 10, 100000, 120000, 'T001.jpg', 1, 'Tas Trendy Cocok dipakai bepergian multifungsi tersedia warna hitam,khaki,hijau,coklat'),
-(2, 'J001', 'Jilbab Anak', 10, 30000, 350000, 'J001.jpg', 4, 'Jilbab cantik buat anak usia 3-6 tahun tersedia warna pink,ungu,hijau,coklat'),
-(3, NULL, 'asdas', 1, 1, 1, '1', 3, 'LoremLoremLoremLoremasd');
+(2, 'J001', 'Jilbab Anak', 10, 30000, 350000, 'J001.jpg', 4, 'Jilbab cantik buat anak usia 3-6 tahun tersedia warna pink,ungu,hijau,coklat');
 
 -- --------------------------------------------------------
 
@@ -137,8 +133,7 @@ CREATE TABLE `suplier` (
 
 INSERT INTO `suplier` (`id`, `nama`, `kota`, `kontak`, `alamat`, `telpon`) VALUES
 (1, 'CV Fikri', 'Majalengka', 'Ibu Eneng Tita', 'Jl. Sudirman No. 12 Majalengka Jawa Barat', NULL),
-(2, 'CV Hanif Busana', 'Depok', 'Ibu Yuyun', 'Jl. Nusantara No. 8 Depok Jawa Barat', NULL),
-(3, 'PT Rul Haxor', 'Depok', 'Fakhirul Akmal', 'Cilodong, Depok', '085155120807');
+(2, 'CV Hanif Busana', 'Depok', 'Ibu Yuyun', 'Jl. Nusantara No. 8 Depok Jawa Barat', NULL);
 
 -- --------------------------------------------------------
 
@@ -162,10 +157,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `created_at`, `last_login`, `status`, `role`) VALUES
-(1, 'admin', '$2y$10$B5YM8DQ.5hoJSyxYfmHoO.pW6xgR9kw5RHSPq6HJXcamMdHVYlsEq', 'admin@gmail.com', '2022-06-11 23:46:37', '2022-06-23 07:19:17', 1, 'administrator'),
+(1, 'admin', '$2y$10$B5YM8DQ.5hoJSyxYfmHoO.pW6xgR9kw5RHSPq6HJXcamMdHVYlsEq', 'admin@gmail.com', '2022-06-11 23:46:37', '2022-06-26 12:08:51', 1, 'administrator'),
 (2, 'aminah', '$2y$10$nlRX3kENBVwbiBdvzqn4a.kM6eEvyKGnMtow/wVDcBFNPCIg49ZKS', 'aminah@gmail.com', '2022-06-11 23:47:09', '2022-06-23 06:51:23', 1, 'public'),
-(3, 'akmal', '$2y$10$j9ifPDy89vxTMFV8UGEGCe3bSreM3n0vD4X.Con5pa5UauYZw47rq', 'fakhirula27@gmail.com', '2022-06-11 23:46:37', '2022-06-23 06:54:57', 1, 'administrator'),
-(4, 'rulhaxor', NULL, 'rulhaxor@gmail.com', '2022-06-20 05:34:13', '2022-06-20 06:08:30', 0, 'public');
+(3, 'akmal', '$2y$10$1PBuoXGcSVL8KIyMoVeogeEIdWizXr3astKVAEUNyRBn4Ob7jYU4q', 'fakhirula27@gmail.com', '2022-06-11 23:46:37', '2022-06-26 14:41:57', 1, 'administrator'),
+(5, 'rulhaxor', '$2y$10$jm3w905/JD.asVvoxBn7pufUQ8CoKl6Vec3ChN5hlw5oCKAeW0v3K', 'rulhaxor@gmail.com', '2022-06-25 19:38:56', '2022-06-25 19:39:15', 1, 'public');
 
 --
 -- Indexes for dumped tables
@@ -222,37 +217,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `jenis_produk`
 --
 ALTER TABLE `jenis_produk`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `suplier`
 --
 ALTER TABLE `suplier`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

@@ -42,7 +42,7 @@ class Produk extends CI_Controller
             $config['upload_path']          = FCPATH . '/assets/images/produk/';
             $config['allowed_types']        = 'jpg|jpeg|png';
             $config['overwrite']            = TRUE;
-            // $config['max_size']             = 10240; // 1GB
+            // $config['max_size']             = 1024; // 1MB
             $config['file_name']            = $gambar;
             // $config['max_width']            = 1080; // in Pixel
             // $config['max_height']           = 1080;
@@ -81,7 +81,7 @@ class Produk extends CI_Controller
             $config['upload_path']          = FCPATH . '/assets/images/produk/';
             $config['allowed_types']        = 'jpg|jpeg|png';
             $config['overwrite']            = TRUE;
-            // $config['max_size']             = 10240; // 1GB
+            // $config['max_size']             = 1024; // 1MB
             $config['file_name']            = $gambar;
             // $config['max_width']            = 1080; // in Pixel
             // $config['max_height']           = 1080;

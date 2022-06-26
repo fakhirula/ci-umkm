@@ -51,4 +51,14 @@ class Users_model extends CI_Model
         );
         return $this->db->update($this->table, $data, array('id' => $id));
     }
+
+    public function change_password()
+    {
+        $current_user = $this->auth_model->current_user();
+        $post = $this->input->post();
+        $data = array(
+            'password' => password_hash($post['newpassword'], PASSWORD_DEFAULT),
+        );
+        return $this->db->update($this->table, $data, array('id' => $current_user->id));
+    }
 }

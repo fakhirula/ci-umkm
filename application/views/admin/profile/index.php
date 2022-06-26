@@ -47,7 +47,7 @@
                                     <!-- Profile picture image-->
                                     <img class="img-account-profile rounded-circle mb-2" src="<?= base_url('assets/images/profiles/profile-1.png'); ?>" alt="" />
                                     <!-- Profile update button-->
-                                    <button class="btn btn-primary mt-2" type="button">Perbarui Data Kamu</button>
+                                    <a href="#change-pw" class="btn btn-primary mt-2" type="button">Amankan Akunmu</a>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                                         <!-- Form Group (username)-->
                                         <div class="mb-3">
                                             <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                                            <input class="form-control" id="inputUsername" type="text" value="<?= htmlentities($current_user->role) ?>" readonly />
+                                            <input class="form-control" id="inputUsername" type="text" value="<?= htmlentities($current_user->username) ?>" readonly />
                                         </div>
                                         <!-- Form Group (email address)-->
 
@@ -90,6 +90,54 @@
                                                 <input class="form-control" id="inputLastLogin" type="text" name="LastLogin" value="<?= htmlentities($current_user->last_login) ?>" readonly />
                                             </div>
                                         </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8">
+                            <?php if ($this->session->flashdata('alert-error')) : ?>
+                                <div class="alert alert-danger mt-2" role="alert">
+                                    <?= $this->session->flashdata('alert-error') ?>
+                                </div>
+                            <?php endif; ?>
+                            <!-- Change Password card-->
+                            <div class="card mb-4" id="change-pw">
+                                <div class="card-header">Change Password</div>
+                                <div class="card-body">
+                                    <form class="user" method="POST" action="<?= base_url('admin/profile/change_password') ?>">
+                                        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
+                                        <!-- Form Group (old password)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="oldpassword">Old Password</label>
+                                            <input class="form-control <?= form_error('oldpassword') ? 'is-invalid' : '' ?>" id="oldpassword" name="oldpassword" type="password" placeholder="Enter Old Password" required />
+                                            <div class="invalid-feedback">
+                                                <?= form_error('oldpassword') ?>
+                                            </div>
+                                        </div>
+                                        <!-- Form Row    -->
+                                        <div class="row gx-3">
+                                            <div class="col-md-6">
+                                                <!-- Form Group (password)-->
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="newpassword">New Password</label>
+                                                    <input class="form-control <?= form_error('newpassword') ? 'is-invalid' : '' ?>" id="newpassword" name="newpassword" type="password" placeholder="Enter New Password" required />
+                                                    <div class="invalid-feedback">
+                                                        <?= form_error('newpassword') ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <!-- Form Group (confirm password)-->
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="confirmPassword">Confirm New Password</label>
+                                                    <input class="form-control <?= form_error('confirmPassword') ? 'is-invalid' : '' ?>" id="confirmPassword" name="confirmPassword" type="password" placeholder="Enter Confirm New Password" required />
+                                                    <div class="invalid-feedback">
+                                                        <?= form_error('confirmPassword') ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Ubah Password</button>
                                     </form>
                                 </div>
                             </div>

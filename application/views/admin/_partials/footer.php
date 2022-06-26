@@ -4,9 +4,7 @@
         <div class="row">
             <div class="col-md-6 small">Copyright &copy; <?php echo SITE_NAME . " " . Date('Y') ?></div>
             <div class="col-md-6 text-md-end small">
-                <a href="#!">Privacy Policy</a>
-                &middot;
-                <a href="#!">Terms &amp; Conditions</a>
+                <p>Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
             </div>
         </div>
     </div>

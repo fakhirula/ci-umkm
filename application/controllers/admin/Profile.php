@@ -25,4 +25,30 @@ class Profile extends CI_Controller
         $data['users'] = $this->users->getAll();
         $this->load->view('admin/profile/index', $data);
     }
+
+    public function change_password()
+    {
+        $users = $this->users;
+
+        $validation = $this->form_validation;
+        $validation->set_rules('oldpassword', 'Old Password', 'required|max_length[255]');
+        $validation->set_rules('newpassword', 'New Password', 'required|max_length[255]|matches[confirmPassword]');
+        $validation->set_rules('confirmPassword', 'Confirm Password', 'required|max_length[255]|matches[newpassword]');
+
+        $current_user = $this->auth_model->current_user();
+        $oldpassword = $this->input->post('oldpassword');
+        
+        if (!password_verify($oldpassword, $current_user->password)) {
+            $this->session->set_flashdata('alert-error', 'Password lama salah!');
+        } else {
+            if ($validation->run()) {
+                $users->change_password();
+                $this->session->set_flashdata('alert-success', 'Update password berhasil');
+            } else {
+                $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
+            }
+        }
+
+        redirect(site_url('admin/profile'));
+    }
 }
