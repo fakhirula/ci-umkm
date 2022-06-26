@@ -10,27 +10,17 @@ class Users_model extends CI_Model
             [
                 'field' => 'username',
                 'label' => 'username',
-                'rules' => 'required|min_length[5]|is_unique[users.username]'
+                'rules' => 'required|min_length[5]|max_length[20]|is_unique[users.username]'
             ],
             [
                 'field' => 'password',
                 'label' => 'password',
-                'rules' => 'required'
+                'rules' => 'required|max_length[255]'
             ],
             [
                 'field' => 'email',
                 'label' => 'email',
-                'rules' => 'required|valid_email|max_length[30]'
-            ],
-            [
-                'field' => 'status',
-                'label' => 'status',
-                'rules' => 'required|integer'
-            ],
-            [
-                'field' => 'role',
-                'label' => 'role',
-                'rules' => 'required'
+                'rules' => 'required|valid_email|max_length[30]|is_unique[users.email]'
             ]
         ];
     }

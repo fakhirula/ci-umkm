@@ -85,7 +85,9 @@
                                             <select id="produk_id" name="produk_id" class="form-select <?php echo form_error('produk_id') ? 'is-invalid' : '' ?>" aria-label="Default select example">
                                                 <option selected disabled>Pilih Produk ID:</option>
                                                 <?php foreach ($produk as $row) : ?>
-                                                    <option value="<?= $row->id; ?>"><?= $row->nama; ?></option>
+                                                    <option <?php if ($pembelian->produk_id == $row->id) {
+                                                                echo 'selected ';
+                                                            } ?>value="<?= $row->id; ?>"><?= $row->nama; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                             <div class="invalid-feedback">
@@ -97,7 +99,9 @@
                                             <select id="suplier_id" name="suplier_id" class="form-select <?php echo form_error('suplier_id') ? 'is-invalid' : '' ?>" aria-label="Default select example">
                                                 <option selected disabled>Pilih Suplier ID:</option>
                                                 <?php foreach ($suplier as $row) : ?>
-                                                    <option value="<?= $row->id; ?>"><?= $row->nama; ?></option>
+                                                    <option <?php if ($pembelian->suplier_id == $row->id) {
+                                                                echo 'selected ';
+                                                            } ?>value="<?= $row->id; ?>"><?= $row->nama; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                             <div class="invalid-feedback">

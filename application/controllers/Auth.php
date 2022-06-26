@@ -6,6 +6,7 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('admin/users_model');
     }
 
     public function index()
@@ -15,28 +16,29 @@ class Auth extends CI_Controller
 
     public function login()
     {
-        $rules = $this->auth_model->rules();
-        $this->form_validation->set_rules($rules);
+        $auth = $this->auth_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($auth->rules());
 
         // Start login
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $current_user = $this->auth_model->current_user();
+        $current_user = $auth->current_user();
         if ($current_user) {
             if ($current_user->role == 'administrator') {
                 redirect('admin');
             }
             redirect(base_url());
         } else {
-            if ($this->form_validation->run() == FALSE) {
+            if ($validation->run() == FALSE) {
                 return $this->load->view('auth/login');
             }
 
-            if ($this->auth_model->login($username, $password)) {
+            if ($auth->login($username, $password)) {
                 redirect('admin');
             } else {
-                $this->session->set_flashdata('message_login_error', 'Login Gagal, pastikan username, password benar dan akun aktif!');
+                $this->session->set_flashdata('alert-error', 'Login Gagal, pastikan username, password benar dan akun aktif!');
                 $this->load->view('auth/login');
             }
         }
@@ -44,7 +46,29 @@ class Auth extends CI_Controller
 
     public function registration()
     {
-        $this->load->view('auth/register');
+        $users = $this->users_model;
+        $auth = $this->auth_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($users->rules());
+        $validation->set_rules('confirmPassword', 'Confirm Password', 'required|max_length[255]|matches[password]');
+
+        $current_user = $auth->current_user();
+        if ($current_user) {
+            if ($current_user->role == 'administrator') {
+                redirect('admin');
+            }
+            redirect(base_url());
+        }
+
+        if ($validation->run()) {
+            $auth->createAccount();
+            $this->session->set_flashdata('alert-success', 'Pendaftaran berhasil');
+            redirect('auth/login');
+        } else {
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
+        }
+
+        $this->load->view('auth/registration');
     }
 
     public function forgot_password()

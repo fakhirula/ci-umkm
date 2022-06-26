@@ -6,7 +6,7 @@
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="<?= site_url('admin/' . $this->uri->segment(2) . '/add') ?>" method="POST">
+                <form action="<?= site_url('admin/' . $this->uri->segment(2) . '/add') ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="mb-3">
                         <label class="small mb-1" for="kode">Kode</label>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="small mb-1" for="foto">Foto</label>
-                        <input class="form-control" id="foto" name="foto" type="file" placeholder="Foto" required autofocus />
+                        <input class="form-control" id="foto" name="foto" type="file" required autofocus />
                     </div>
                     <div class="mb-3">
                         <label class="small mb-1">Jenis Produk</label>

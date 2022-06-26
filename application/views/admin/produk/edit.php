@@ -56,7 +56,7 @@
                             <div class="card mb-4">
                                 <div class="card-header"><?= str_replace("_", " ", ucfirst($this->uri->segment(2))) . " Details" ?></div>
                                 <div class="card-body">
-                                    <form action="" method="POST">
+                                    <form action="" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                         <input id="id" name="id" type="hidden" value="<?= $produk->id ?>" required readonly />
                                         <div class="mb-3">
@@ -96,7 +96,8 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="small mb-1" for="foto">Foto</label>
-                                            <input class="form-control <?php echo form_error('foto') ? 'is-invalid' : '' ?>" id="foto" name="foto" type="text" value="<?= $produk->foto ?>" required />
+                                            <input type="hidden" value="<?= $produk->foto ?>" name="gambar">
+                                            <input class="form-control <?php echo form_error('foto') ? 'is-invalid' : '' ?>" id="foto" name="foto" value="../assetts/images/ptoduk/<?= $produk->foto ?>" type="file" accept="image/png, image/jpeg, image/jpg" />
                                             <div class="invalid-feedback">
                                                 <?php echo form_error('foto') ?>
                                             </div>
@@ -106,7 +107,9 @@
                                             <select id="jenis_id" name="jenis_id" class="form-select <?php echo form_error('jenis_id') ? 'is-invalid' : '' ?>" aria-label="Default select example">
                                                 <option selected disabled>Pilih Jenis Produk:</option>
                                                 <?php foreach ($jenis_produk as $row) : ?>
-                                                    <option value="<?= $row->id; ?>"><?= $row->nama; ?></option>
+                                                    <option <?php if ($produk->jenis_id == $row->id) {
+                                                                echo 'selected ';
+                                                            } ?>value="<?= $row->id; ?>"><?= $row->nama; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                             <div class="invalid-feedback">

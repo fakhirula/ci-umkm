@@ -23,8 +23,9 @@
                         <div class="me-4 mb-3 mb-sm-0">
                             <h1 class="mb-0">Dashboard</h1>
                             <div class="small">
-                                <span class="fw-500 text-primary">Friday</span>
-                                &middot; September 20, 2021 &middot; 12:16 PM
+                                <?php date_default_timezone_set("Asia/Jakarta") ?>
+                                <span class="fw-500 text-primary"><?= date("l"); ?></span>
+                                &middot; <?= date("d M Y"); ?> &middot; <?= date("h:i A") ?>
                             </div>
                         </div>
                         <!-- Date range picker example-->

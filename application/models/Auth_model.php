@@ -11,7 +11,7 @@ class Auth_model extends CI_Model
             [
                 'field' => 'username',
                 'label' => 'Username or Email',
-                'rules' => 'required'
+                'rules' => 'required|min_length[4]|max_length[20]'
             ],
             [
                 'field' => 'password',
@@ -66,20 +66,23 @@ class Auth_model extends CI_Model
         return !$this->session->has_userdata(self::SESSION_KEY);
     }
 
-    public function getRole()
+    public function createAccount()
     {
-        $query = $this->db->get($this->table);
-        $user = $query->row();
+        $post = $this->input->post();
+        $this->username = $post['username'];
+        $this->password = password_hash($post['password'], PASSWORD_DEFAULT);
+        $this->email = $post['email'];
+        $this->status = 1;
+        $this->role = 'public';
+        $this->created_at = date('Y-m-d H:i:s');
+        $this->last_login = null;
 
-        if ($user->role == 'administrator') {
-            return 'admin';
-        } else {
-            return 'public';
-        }
+        return $this->db->insert($this->table, $this);
     }
 
     private function _update_last_login($id)
     {
+        date_default_timezone_set("Asia/Jakarta");
         $data = [
             'last_login' => date('Y-m-d H:i:s')
         ];

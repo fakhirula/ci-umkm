@@ -75,7 +75,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="small mb-1" for="users_id">Users ID</label>
-                                            <input class="form-control <?php echo form_error('users_id') ? 'is-invalid' : '' ?>" id="users_id" name="users_id" type="text" value="<?= $pesanan->users_id ?>" required readonly/>
+                                            <input class="form-control <?php echo form_error('users_id') ? 'is-invalid' : '' ?>" id="users_id" name="users_id" type="text" value="<?= $pesanan->users_id ?>" required readonly />
                                             <div class="invalid-feedback">
                                                 <?php echo form_error('users_id') ?>
                                             </div>
@@ -85,7 +85,9 @@
                                             <select id="produk_id" name="produk_id" class="form-select <?php echo form_error('produk_id') ? 'is-invalid' : '' ?>" aria-label="Default select example">
                                                 <option selected disabled>Pilih Produk ID:</option>
                                                 <?php foreach ($produk as $row) : ?>
-                                                    <option value="<?= $row->id; ?>"><?= $row->nama; ?></option>
+                                                    <option <?php if ($pesanan->produk_id == $row->id) {
+                                                                echo 'selected ';
+                                                            } ?>value="<?= $row->id; ?>"><?= $row->nama; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                             <div class="invalid-feedback">

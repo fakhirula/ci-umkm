@@ -32,12 +32,34 @@ class Produk extends CI_Controller
     {
         $produk = $this->produk_model;
         $validation = $this->form_validation;
-        $this->form_validation->set_rules($produk->rules());
-        $this->form_validation->set_rules('kode', 'Kode', 'required|min_length[3]|max_length[4]|is_unique[produk.kode]');
+        $validation->set_rules($produk->rules());
 
-        if ($this->form_validation->run()) {
-            $produk->save();
-            $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
+
+        if ($validation->run()) {
+
+            $post = $this->input->post();
+            $gambar = $post['kode'];
+            $config['upload_path']          = FCPATH . '/assets/images/produk/';
+            $config['allowed_types']        = 'jpg|jpeg|png';
+            $config['overwrite']            = TRUE;
+            // $config['max_size']             = 10240; // 1GB
+            $config['file_name']            = $gambar;
+            // $config['max_width']            = 1080; // in Pixel
+            // $config['max_height']           = 1080;
+            // $config['max_filename']         = 300;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('foto')) {
+                $this->session->set_flashdata('alert-error', 'foto gagal diupload');
+            } else {
+                $uploaded_data = $this->upload->data();
+                $data['foto'] = $uploaded_data['file_name'];
+
+                if ($produk->save($data)) {
+                    $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
+                }
+            }
         } else {
             $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }
@@ -54,9 +76,35 @@ class Produk extends CI_Controller
         $validation->set_rules($produk->rules());
 
         if ($validation->run()) {
-            if ($produk->update()) {
-                $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
-                redirect(site_url('admin/produk'), 'refresh');
+            $post = $this->input->post();
+            $gambar = $post['kode'];
+            $config['upload_path']          = FCPATH . '/assets/images/produk/';
+            $config['allowed_types']        = 'jpg|jpeg|png';
+            $config['overwrite']            = TRUE;
+            // $config['max_size']             = 10240; // 1GB
+            $config['file_name']            = $gambar;
+            // $config['max_width']            = 1080; // in Pixel
+            // $config['max_height']           = 1080;
+            // $config['max_filename']         = 300;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('foto')) {
+
+                $post = $this->input->post();
+                $data['foto'] = $post['gambar'];
+                if ($produk->update($data)) {
+                    $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
+                    redirect(site_url('admin/produk'), 'refresh');
+                }
+            } else {
+                $uploaded_data = $this->upload->data();
+                $data['foto'] = $uploaded_data['file_name'];
+
+                if ($produk->update($data)) {
+                    $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
+                    redirect(site_url('admin/produk'), 'refresh');
+                }
             }
         } else {
             $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
@@ -73,6 +121,9 @@ class Produk extends CI_Controller
     public function delete($id = null)
     {
         if (!isset($id)) show_404();
+        $try = $this->produk_model->getById($this->secure->decrypt_url($id));
+        $foto = $try->foto;
+        unlink(FCPATH . '/assets/images/produk/' . $foto);
 
         if ($this->produk_model->delete($this->secure->decrypt_url($id))) {
             $this->session->set_flashdata('alert-success', 'Data berhasil dihapus');

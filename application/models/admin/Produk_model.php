@@ -32,11 +32,11 @@ class Produk_model extends CI_Model
                 'label' => 'Harga_jual',
                 'rules' => 'required|integer'
             ],
-            [
-                'field' => 'foto',
-                'label' => 'Foto',
-                'rules' => 'required'
-            ],
+            // [
+            //     'field' => 'foto',
+            //     'label' => 'Foto',
+            //     'rules' => 'required'
+            // ],
             [
                 'field' => 'jenis_id',
                 'label' => 'Jenis_id',
@@ -58,10 +58,10 @@ class Produk_model extends CI_Model
 
     public function getById($id)
     {
-        return $this->db->get_where($this->table, ['id' =>$id])->row();
+        return $this->db->get_where($this->table, ['id' => $id])->row();
     }
 
-    public function save()
+    public function save($data)
     {
         $post = $this->input->post();
         $this->kode = $post['kode'];
@@ -69,14 +69,14 @@ class Produk_model extends CI_Model
         $this->stok = $post['stok'];
         $this->harga_beli = $post['harga_beli'];
         $this->harga_jual = $post['harga_jual'];
-        $this->foto = $post['foto'];
+        $this->foto = $data['foto'];
         $this->jenis_id = $post['jenis_id'];
         $this->deskripsi = $post['deskripsi'];
 
         return $this->db->insert($this->table, $this);
     }
 
-    public function update()
+    public function update($data)
     {
         $post = $this->input->post();
         $this->id = $post['id'];
@@ -85,7 +85,7 @@ class Produk_model extends CI_Model
         $this->stok = $post['stok'];
         $this->harga_beli = $post['harga_beli'];
         $this->harga_jual = $post['harga_jual'];
-        $this->foto = $post['foto'];
+        $this->foto = $data['foto'];
         $this->jenis_id = $post['jenis_id'];
         $this->deskripsi = $post['deskripsi'];
 

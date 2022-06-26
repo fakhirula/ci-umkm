@@ -17,43 +17,50 @@
                                 <div class="card-header justify-content-center">
                                     <h3 class="fw-light my-3">Create an Account!</h3>
                                 </div>
-                                <?php if ($this->session->flashdata('message_login_error')) : ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        <?= $this->session->flashdata('message_login_error'); ?>
-                                    </div>
-                                <?php endif; ?>
                                 <div class="card-body">
                                     <!-- Registration form-->
-                                    <form method="POST" action="<?= base_url('auth/registration') ?>">
+                                    <form class="user" method="POST" action="<?= base_url('auth/registration') ?>">
                                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                         <!-- Form Row-->
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="inputUsername">Username</label>
-                                            <input class="form-control" id="inputUsername" type="text" aria-describedby="Username" placeholder="Enter username" required autofocus/>
+                                            <label class="small mb-1" for="username">Username</label>
+                                            <input class="form-control <?= form_error('username') ? 'is-invalid' : '' ?>" id="username" name="username" type="text" placeholder="Enter username" required autofocus />
+                                            <div class="invalid-feedback">
+                                                <?= form_error('username') ?>
+                                            </div>
                                         </div>
                                         <!-- Form Group (email address)            -->
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                            <input class="form-control" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" required autofocus/>
+                                            <label class="small mb-1" for="email">Email</label>
+                                            <input class="form-control <?= form_error('email') ? 'is-invalid' : '' ?>" id="email" name="email" type="email" placeholder="Enter email address" required autofocus />
+                                            <div class="invalid-feedback">
+                                                <?= form_error('email') ?>
+                                            </div>
                                         </div>
                                         <!-- Form Row    -->
                                         <div class="row gx-3">
                                             <div class="col-md-6">
                                                 <!-- Form Group (password)-->
                                                 <div class="mb-3">
-                                                    <label class="small mb-1" for="inputPassword">Password</label>
-                                                    <input class="form-control" id="inputPassword" type="password" placeholder="Enter password" required autofocus/>
+                                                    <label class="small mb-1" for="password">Password</label>
+                                                    <input class="form-control <?= form_error('password') ? 'is-invalid' : '' ?>" id="password" name="password" type="password" placeholder="Enter password" required autofocus />
+                                                    <div class="invalid-feedback">
+                                                        <?= form_error('password') ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <!-- Form Group (confirm password)-->
                                                 <div class="mb-3">
-                                                    <label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
-                                                    <input class="form-control" id="inputConfirmPassword" type="password" placeholder="Confirm password" required autofocus/>
+                                                    <label class="small mb-1" for="confirmPassword">Confirm Password</label>
+                                                    <input class="form-control <?= form_error('confirmPassword') ? 'is-invalid' : '' ?>" id="confirmPassword" name="confirmPassword" type="password" placeholder="Enter Confirm password" required autofocus />
+                                                    <div class="invalid-feedback">
+                                                        <?= form_error('confirmPassword') ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Register Account</button>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center">

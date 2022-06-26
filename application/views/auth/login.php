@@ -17,29 +17,29 @@
                                 <div class="card-header justify-content-center">
                                     <h3 class="fw-light my-3">Login Page</h3>
                                 </div>
-                                <?php if ($this->session->flashdata('message_login_error')) : ?>
+                                <?php if ($this->session->flashdata('admin')) : ?>
                                     <div class="alert alert-danger" role="alert">
-                                        <?= $this->session->flashdata('message_login_error'); ?>
+                                        <?= $this->session->flashdata('admin'); ?>
                                     </div>
                                 <?php endif; ?>
                                 <div class="card-body">
                                     <!-- Login form-->
-                                    <form action="" method="POST">
+                                    <form class="user" action="" method="POST">
                                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                         <!-- Form Group (username)-->
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="inputUsername">Username</label>
+                                            <label class="small mb-1" for="username">Username</label>
                                             <input class="form-control" <?php echo set_value('username'); ?> id="username" name="username" type="text" placeholder="Enter email address" required autofocus/>
                                         </div>
                                         <!-- Form Group (password)-->
                                         <div class="mb-3">
-                                            <label class="small mb-1" for="inputPassword">Password</label>
+                                            <label class="small mb-1" for="password">Password</label>
                                             <input class="form-control" <?php echo set_value('password'); ?> id="password" name="password" type="password" placeholder="Enter password" required autofocus/>
                                         </div>
                                         <!-- Form Group (login box)-->
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="<?= base_url('auth/forgot_password') ?>">Forgot Password?</a>
-                                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Login</button>
                                         </div>
                                     </form>
                                 </div>
