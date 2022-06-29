@@ -29,12 +29,12 @@
                                         <!-- Form Group (username)-->
                                         <div class="mb-3">
                                             <label class="small mb-1" for="username">Username</label>
-                                            <input class="form-control" <?php echo set_value('username'); ?> id="username" name="username" type="text" placeholder="Enter email address" required autofocus />
+                                            <input class="form-control" <?= set_value('username'); ?> id="username" name="username" type="text" placeholder="Enter email address" required autofocus />
                                         </div>
                                         <!-- Form Group (password)-->
                                         <div class="mb-3">
                                             <label class="small mb-1" for="password">Password</label>
-                                            <input class="form-control" <?php echo set_value('password'); ?> id="password" name="password" type="password" placeholder="Enter password" required autofocus />
+                                            <input class="form-control" <?= set_value('password'); ?> id="password" name="password" type="password" placeholder="Enter password" required autofocus />
                                         </div>
                                         <!-- Form Group (login box)-->
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">

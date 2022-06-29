@@ -42,10 +42,10 @@ class Jenisproduk_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->id = $post['id'];
+        $this->id = $this->secure->decrypt_url($post['id']);
         $this->nama = $post['nama'];
 
-        return $this->db->update($this->table, $this, array('id' => $post['id']));
+        return $this->db->update($this->table, $this, array('id' => $this->id));
     }
 
     public function delete($id)

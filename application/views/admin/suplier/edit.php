@@ -58,7 +58,7 @@
                                 <div class="card-body">
                                     <form action="" method="POST">
                                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
-                                        <input id="id" name="id" type="hidden" value="<?= $suplier->id ?>" required readonly />
+                                        <input id="id" name="id" type="hidden" value="<?= $this->secure->encrypt_url($suplier->id) ?>" required readonly />
                                         <div class="mb-3">
                                             <label class="small mb-1" for="nama">Nama Perusahaan</label>
                                             <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" id="nama" name="nama" type="text" value="<?= $suplier->nama ?>" required />
@@ -82,7 +82,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="small mb-1" for="alamat">Alamat</label>
-                                            <input class="form-control <?php echo form_error('alamat') ? 'is-invalid' : '' ?>" id="alamat" name="alamat" type="text" value="<?= $suplier->alamat ?>" required />
+                                            <textarea class="form-control <?php echo form_error('alamat') ? 'is-invalid' : '' ?>" id="alamat" name="alamat" placeholder="Alamat" required><?= $suplier->alamat ?></textarea>
                                             <div class="invalid-feedback">
                                                 <?php echo form_error('alamat') ?>
                                             </div>

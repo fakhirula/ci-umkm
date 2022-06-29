@@ -61,14 +61,14 @@ class Pembelian_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->id = $post['id'];
+        $this->id = $this->secure->decrypt_url($post['id']);
         $this->tanggal = $post['tanggal'];
         $this->jumlah = $post['jumlah'];
         $this->harga = $post['harga'];
         $this->produk_id = $post['produk_id'];
         $this->suplier_id = $post['suplier_id'];
 
-        return $this->db->update($this->table, $this, array('id' => $post['id']));
+        return $this->db->update($this->table, $this, array('id' => $this->id));
     }
 
     public function delete($id)

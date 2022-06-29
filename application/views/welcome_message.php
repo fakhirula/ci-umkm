@@ -6,260 +6,177 @@
 </head>
 
 <body>
-	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#!">Start Bootstrap</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-					<li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="#!">All Products</a></li>
-							<li>
-								<hr class="dropdown-divider" />
-							</li>
-							<li><a class="dropdown-item" href="#!">Popular Items</a></li>
-							<li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-						</ul>
-					</li>
-				</ul>
-				<form class="d-flex">
-					<button class="btn btn-outline-dark" type="submit">
-						<i class="bi-cart-fill me-1"></i>
-						Cart
-						<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-					</button>
-				</form>
+	<main class="flex-shrink-0">
+		<!-- Navigation-->
+		<nav class="navbar-dark bg-dark">
+			<?php $this->load->view('public/_partials/navbar.php') ?>
+		</nav>
+		<!-- Header-->
+		<header class="bg-dark py-5">
+			<div class="container px-5">
+				<div class="row gx-5 align-items-center justify-content-center">
+					<div class="col-lg-8 col-xl-7 col-xxl-6">
+						<div class="my-5 text-center text-xl-start">
+							<h1 class="display-5 fw-bolder text-white mb-2">LESTARI INDONESIA KU #AYOPAKAIBATIK</h1>
+							<p class="lead fw-normal text-white-50 mb-4">Mari ikut bersama SELIR.ID dalam rangka melestarikan budaya nusantara ke kancah Internasional. Dapatkan diskon hingga 50% untuk pelanggan baru! Ayo daftar sekarang!</p>
+							<div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+								<a class="btn btn-light rounded-0 btn-lg px-4 me-sm-3" href="<?= base_url('auth/registration') ?>">Daftar</a>
+								<a class="btn btn-outline-light rounded-0 btn-lg px-4" href="#features">Learn More</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-0 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+				</div>
 			</div>
-		</div>
-	</nav>
-	<!-- Header-->
-	<header class="bg-dark py-5">
-		<div class="container px-4 px-lg-5 my-5">
-			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">Shop in style</h1>
-				<p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+		</header>
+		<!-- Features section-->
+		<section class="container px-lg-5 py-5" id="features">
+			<!-- Page Features-->
+			<div class="row my-5 gx-5 justify-content-center">
+				<div class="col-lg-8 col-xl-6">
+					<div class="text-center">
+						<h2 class="display-6 fw-bolder">Keunggulan SELIR</h2>
+						<p class="lead fw-normal text-muted mb-5">Dalam rangka membantu pemerintah sekaligus mengurangi pengangguran di Indonesia. Kami sepenuhnya memanfaatkan Sumber Daya Alam dan Manusia Nusantara.</p>
+					</div>
+				</div>
 			</div>
-		</div>
-	</header>
-	<!-- Section-->
-	<section class="py-5">
-		<div class="container px-4 px-lg-5 mt-5">
-			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Fancy Product</h5>
-								<!-- Product price-->
-								$40.00 - $80.00
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+			<div class="row gx-lg-5">
+				<div class="col-lg-4 col-xxl-4 mb-5">
+					<div class="card bg-light border-0 h-100">
+						<div class="card-body text-center p-4 p-lg-4 pt-0">
+							<i class="py-3 text-primary fa-solid fa-truck-fast fa-2x"></i>
+							<h2 class="fs-4 fw-bold">One Day Service</h2>
+							<p class="mb-0">Tidak perlu menunggu lama, sekali klik-langsung kirim!</p>
 						</div>
 					</div>
 				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Special Item</h5>
-								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
+				<div class="col-lg-4 col-xxl-4 mb-5">
+					<div class="card bg-light border-0 h-100">
+						<div class="card-body text-center p-4 p-lg-4 pt-0">
+							<i class="py-3 text-primary fa-solid fa-arrow-trend-down fa-2x"></i>
+							<h2 class="fs-4 fw-bold">Harga Terjangkau</h2>
+							<p class="mb-0">Tinggalkan toko sebelah yang sangat mahal! SELIR.ID original dengan harga terjangkau!</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-xxl-4 mb-5">
+					<div class="card bg-light border-0 h-100">
+						<div class="card-body text-center p-4 p-lg-4 pt-0">
+							<i class="py-3 text-primary fa-solid fa-shield-halved fa-2x"></i>
+							<h2 class="fs-4 fw-bold">Jaminan Aman</h2>
+							<p class="mb-0">Dijamin Aman! Semua data kami lindungi dengan enkripsi bertahap tingkat tinggi.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-xxl-4 mb-5">
+					<div class="card bg-light border-0 h-100">
+						<div class="card-body text-center p-4 p-lg-4 pt-0">
+							<i class="py-3 text-primary fa-regular fa-handshake fa-2x"></i>
+							<h2 class="fs-4 fw-bold">Sistem Prioritas</h2>
+							<p class="mb-0">Kepuasan pelanggan adalah prioritas kami! Customer Service 24 jam hanya untuk mu!</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-xxl-4 mb-5">
+					<div class="card bg-light border-0 h-100">
+						<div class="card-body text-center p-4 p-lg-4 pt-0">
+							<i class="py-3 text-primary fa-solid fa-code fa-2x"></i>
+							<h2 class="fs-4 fw-bold">Bersih dan Cepat</h2>
+							<p class="mb-0">Menggunakan teknologi terbaru dan mutakhir. Bersih dan lebih cepat!</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-xxl-4 mb-5">
+					<div class="card bg-light border-0 h-100">
+						<div class="card-body text-center p-4 p-lg-4 pt-0">
+							<i class="py-3 text-primary fa-solid fa-certificate fa-2x"></i>
+							<h2 class="fs-4 fw-bold">Terpercaya</h2>
+							<p class="mb-0">SELIR.ID sudah dipercaya oleh jutaan masyarakat Indonesia dan luar negeri.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Testimonial section-->
+		<div class="py-5 bg-light">
+			<div class="container px-5 my-5">
+				<div class="row gx-5 justify-content-center">
+					<div class="col-lg-10 col-xl-7">
+						<div class="text-center">
+							<div class="fs-2 mb-4 fst-italic">"SELIR itu aplikasi jual beli sistem reseller, jadi kami ngambil produk dari toko lain. Kami itu resmi dan kami percaya SELIR lebih unggul dari online shop lain dalam keamanan data."</div>
+							<div class="d-flex align-items-center justify-content-center">
+								<img class="avatar rounded-circle me-3" src="<?= base_url('assets/images/profiles/profile-1.png') ?>" alt="..." />
+								<div class="fw-bold">
+									Fakhirul Akmal
+									<span class="fw-bold text-primary mx-1">/</span>
+									CEO, <?= SITE_NAME ?>
 								</div>
-								<!-- Product price-->
-								<span class="text-muted text-decoration-line-through">$20.00</span>
-								$18.00
 							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-						</div>
-					</div>
-				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Sale Item</h5>
-								<!-- Product price-->
-								<span class="text-muted text-decoration-line-through">$50.00</span>
-								$25.00
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-						</div>
-					</div>
-				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Popular Item</h5>
-								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								$40.00
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-						</div>
-					</div>
-				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Sale Item</h5>
-								<!-- Product price-->
-								<span class="text-muted text-decoration-line-through">$50.00</span>
-								$25.00
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-						</div>
-					</div>
-				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Fancy Product</h5>
-								<!-- Product price-->
-								$120.00 - $280.00
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-						</div>
-					</div>
-				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Special Item</h5>
-								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								<span class="text-muted text-decoration-line-through">$20.00</span>
-								$18.00
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-						</div>
-					</div>
-				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Popular Item</h5>
-								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								$40.00
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+		<!-- Blog preview section-->
+		<section class="py-5">
+			<div class="container px-5 my-5">
+				<div class="row gx-5 justify-content-center">
+					<div class="col-lg-8 col-xl-6">
+						<div class="text-center">
+							<h2 class="display-6 fw-bolder">Dari Pengrajin Batik Tradisional</h2>
+							<p class="lead fw-normal text-muted mb-5">Dalam rangka membantu pemerintah sekaligus mengurangi pengangguran di Indonesia. Kami sepenuhnya memanfaatkan Sumber Daya Alam dan Manusia Nusantara.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-5">
+					<!-- Section-->
+					<?php foreach ($produk as $row) : ?>
+						<div class="col-lg-4 mb-5">
+							<div class="card h-100 shadow border-0 rounded-0">
+								<img class="card-img-top rounded-0" src="<?= base_url('assets/images/produk/' . $row->foto) ?>" alt="..." />
+								<div class="card-body p-4">
+									<div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
+									<a class="text-decoration-none link-dark stretched-link" href="<?= site_url('detail_produk/' . $this->secure->encrypt_url($row->id)) ?>">
+										<h5 class="card-title mb-3"><?= $row->nama; ?></h5>
+									</a>
+									<p class="card-text mb-0"><?= $row->deskripsi; ?></p>
+								</div>
+								<div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+									<div class="d-flex align-items-end justify-content-between">
+										<div class="d-flex align-items-center">
+											<img class="avatar rounded-circle me-3" src="<?= base_url('assets/images/profiles/profile-1.png') ?>" alt="..." />
+											<div class="small">
+												<div class="fw-bold">Administrator</div>
+												<div class="text-muted">April 2, 2022 &middot; 10 min read</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				</div>
+				<!-- Call to action-->
+				<aside class="bg-dark rounded-0 p-4 p-sm-5 mt-5">
+					<div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
+						<div class="mb-4 mb-xl-0">
+							<div class="fs-1 fw-bold text-white">Produk baru, langsung dikirim untuk mu.</div>
+							<div class="text-white-50">Daftar sekarang untuk info terbaru dari kami!</div>
+						</div>
+						<div class="ms-xl-4">
+							<div class="input-group mb-2">
+								<input class="form-control rounded-0" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
+								<a href="<?= base_url('auth/registration') ?>" class="btn btn-outline-light rounded-0" id="button-newsletter">Daftar</a>
+							</div>
+							<div class="small text-white-50">Kami peduli dengan privasi, dan tidak akan pernah membagikan data Anda.</div>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</section>
+	</main>
 	<!-- Footer-->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 small">Copyright &copy; <?php echo SITE_NAME . " " . Date('Y') ?></div>
-				<div class="col-md-6 text-md-end small">
-					<p>Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<?php $this->load->view('public/_partials/footer.php') ?>
 	<?php $this->load->view('templates/js.php') ?>
 </body>
 

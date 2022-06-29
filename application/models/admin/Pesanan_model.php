@@ -55,13 +55,13 @@ class Pesanan_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->id = $post['id'];
+        $this->id = $this->secure->decrypt_url($post['id']);
         $this->tanggal = $post['tanggal'];
         $this->jumlah = $post['jumlah'];
         $this->users_id = $post['users_id'];
         $this->produk_id = $post['produk_id'];
 
-        return $this->db->update($this->table, $this, array('id' => $post['id']));
+        return $this->db->update($this->table, $this, array('id' => $this->id));
     }
 
     public function delete($id)

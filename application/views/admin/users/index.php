@@ -89,7 +89,7 @@
                                             <td><?= $row->created_at ?></td>
                                             <td><?= $row->last_login ?></td>
                                             <td>
-                                                <?php if ($row->id != $current_user->id) : ?>
+                                                <?php if ($row->id != $current_user->id && $row->role != 'administrator') : ?>
                                                     <?php if ($row->status == 0) : ?>
                                                         <a href="<?= site_url('admin/users/setActive/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-success btn-sm">
                                                             Aktifkan

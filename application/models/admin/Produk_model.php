@@ -32,11 +32,6 @@ class Produk_model extends CI_Model
                 'label' => 'Harga_jual',
                 'rules' => 'required|integer'
             ],
-            // [
-            //     'field' => 'foto',
-            //     'label' => 'Foto',
-            //     'rules' => 'required'
-            // ],
             [
                 'field' => 'jenis_id',
                 'label' => 'Jenis_id',
@@ -79,7 +74,7 @@ class Produk_model extends CI_Model
     public function update($data)
     {
         $post = $this->input->post();
-        $this->id = $post['id'];
+        $this->id = $this->secure->decrypt_url($post['id']);
         $this->kode = $post['kode'];
         $this->nama = $post['nama'];
         $this->stok = $post['stok'];
@@ -89,7 +84,7 @@ class Produk_model extends CI_Model
         $this->jenis_id = $post['jenis_id'];
         $this->deskripsi = $post['deskripsi'];
 
-        return $this->db->update($this->table, $this, array('id' => $post['id']));
+        return $this->db->update($this->table, $this, array('id' => $this->id));
     }
 
     public function delete($id)

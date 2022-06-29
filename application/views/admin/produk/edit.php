@@ -58,10 +58,10 @@
                                 <div class="card-body">
                                     <form action="" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
-                                        <input id="id" name="id" type="hidden" value="<?= $produk->id ?>" required readonly />
+                                        <input id="id" name="id" type="hidden" value="<?= $this->secure->encrypt_url($produk->id) ?>" required readonly />
                                         <div class="mb-3">
                                             <label class="small mb-1" for="kode">Kode</label>
-                                            <input class="form-control <?php echo form_error('kode') ? 'is-invalid' : '' ?>" id="kode" name="kode" type="text" value="<?= $produk->kode ?>" required />
+                                            <input class="form-control <?php echo form_error('kode') ? 'is-invalid' : '' ?>" id="kode" name="kode" type="text" value="<?= $produk->kode ?>" required readonly />
                                             <div class="invalid-feedback">
                                                 <?php echo form_error('kode') ?>
                                             </div>
@@ -118,7 +118,8 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="small mb-1" for="deskripsi">Deskripsi</label>
-                                            <input class="form-control <?php echo form_error('deskripsi') ? 'is-invalid' : '' ?>" id="deskripsi" name="deskripsi" type="text" value="<?= $produk->deskripsi ?>" required />
+
+                                            <textarea class="form-control <?php echo form_error('deskripsi') ? 'is-invalid' : '' ?>" id="deskripsi" name="deskripsi" placeholder="Deskripsi" required><?= $produk->deskripsi ?></textarea>
                                             <div class="invalid-feedback">
                                                 <?php echo form_error('deskripsi') ?>
                                             </div>

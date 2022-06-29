@@ -58,7 +58,7 @@
                                 <div class="card-body">
                                     <form action="" method="POST">
                                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
-                                        <input id="id" name="id" type="hidden" value="<?= $pesanan->id ?>" required readonly />
+                                        <input id="id" name="id" type="hidden" value="<?= $this->secure->encrypt_url($pesanan->id) ?>" required readonly />
                                         <div class="mb-3">
                                             <label class="small mb-1" for="tanggal">Tanggal</label>
                                             <input class="form-control <?php echo form_error('tanggal') ? 'is-invalid' : '' ?>" id="tanggal" name="tanggal" type="text" value="<?= $pesanan->tanggal ?>" required />

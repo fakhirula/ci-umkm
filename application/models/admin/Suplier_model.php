@@ -61,14 +61,14 @@ class Suplier_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->id = $post['id'];
+        $this->id = $this->secure->decrypt_url($post['id']);
         $this->nama = $post['nama'];
         $this->kota = $post['kota'];
         $this->kontak = $post['kontak'];
         $this->alamat = $post['alamat'];
         $this->telpon = $post['telpon'];
 
-        return $this->db->update($this->table, $this, array('id' => $post['id']));
+        return $this->db->update($this->table, $this, array('id' => $this->id));
     }
 
     public function delete($id)

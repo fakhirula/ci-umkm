@@ -40,6 +40,12 @@ class Users extends CI_Controller
     {
         if (!isset($id)) show_404();
 
+        $current_user = $this->auth_model->current_user();
+        if ($this->secure->decrypt_url($id) == $current_user->id || $this->secure->decrypt_url($id) == ($current_user->role == 'administrator')) {
+            $this->session->set_flashdata('alert-error', 'Tidak bisa menonaktifkan akun administrator!');
+            redirect(site_url('admin/users'), 'refresh');
+        }
+
         if ($this->users->setNonactive($this->secure->decrypt_url($id))) {
             $this->session->set_flashdata('alert-success', 'Data berhasil dinonaktifkan');
             redirect(site_url('admin/users'), 'refresh');

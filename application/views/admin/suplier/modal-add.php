@@ -24,7 +24,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="small mb-1" for="alamat">Alamat</label>
-                        <input class="form-control" id="alamat" name="alamat" type="text" placeholder="Alamat" required autofocus />
+                        <textarea class="form-control" id="alamat" name="alamat" placeholder="Alamat" required autofocus></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="small mb-1" for="telpon">Telpon</label>

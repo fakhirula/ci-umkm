@@ -33,7 +33,7 @@ class Produk extends CI_Controller
         $produk = $this->produk_model;
         $validation = $this->form_validation;
         $validation->set_rules($produk->rules());
-
+        $validation->set_rules('kode', 'Kode', 'required|min_length[3]|max_length[4]|is_unique[produk.kode]');
 
         if ($validation->run()) {
 
@@ -42,11 +42,11 @@ class Produk extends CI_Controller
             $config['upload_path']          = FCPATH . '/assets/images/produk/';
             $config['allowed_types']        = 'jpg|jpeg|png';
             $config['overwrite']            = TRUE;
-            // $config['max_size']             = 1024; // 1MB
+            $config['max_size']             = 1024; // 1024kB
             $config['file_name']            = $gambar;
-            // $config['max_width']            = 1080; // in Pixel
-            // $config['max_height']           = 1080;
-            // $config['max_filename']         = 300;
+            $config['max_width']            = 1080; // in Pixel
+            $config['max_height']           = 1080;
+            $config['max_filename']         = 10;
 
             $this->load->library('upload', $config);
 
@@ -74,6 +74,7 @@ class Produk extends CI_Controller
         $produk = $this->produk_model;
         $validation = $this->form_validation;
         $validation->set_rules($produk->rules());
+        // $validation->set_rules('kode', 'Kode', 'required|min_length[3]|max_length[4]|matches[kode]');
 
         if ($validation->run()) {
             $post = $this->input->post();
@@ -81,11 +82,11 @@ class Produk extends CI_Controller
             $config['upload_path']          = FCPATH . '/assets/images/produk/';
             $config['allowed_types']        = 'jpg|jpeg|png';
             $config['overwrite']            = TRUE;
-            // $config['max_size']             = 1024; // 1MB
+            $config['max_size']             = 1024; // 1024kB
             $config['file_name']            = $gambar;
-            // $config['max_width']            = 1080; // in Pixel
-            // $config['max_height']           = 1080;
-            // $config['max_filename']         = 300;
+            $config['max_width']            = 1080; // in Pixel
+            $config['max_height']           = 1080;
+            $config['max_filename']         = 10;
 
             $this->load->library('upload', $config);
 
