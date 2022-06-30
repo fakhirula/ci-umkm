@@ -41,7 +41,7 @@ class Pesanan_model extends CI_Model
         date_default_timezone_set("Asia/Jakarta");
 
         $post = $this->input->post();
-        $this->tanggal = date('Y-m-d H:i:s');
+        $this->tanggal = date('Y-m-d');
         $this->jumlah = $post['jumlah'];
         $this->users_id = $this->secure->decrypt_url($post['users_id']);
         $this->produk_id = $this->secure->decrypt_url($post['produk_id']);

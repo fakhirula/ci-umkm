@@ -35,8 +35,6 @@ class Produk extends CI_Controller
     public function checkout($id = null, $jumlah = null)
     {
         $jumlah = $this->input->get('jumlah');
-        if (!isset($id) || !$jumlah || $jumlah < 0) redirect('produk');
-
         $pesanan = $this->pesanan_model;
         $produk = $this->produk_model;
         $validation = $this->form_validation;
@@ -44,7 +42,7 @@ class Produk extends CI_Controller
 
         if ($validation->run()) {
             $pesanan->save();
-            $produk->updateStok();
+            $produk->kurangiStok();
             $this->session->set_flashdata('alert-success', 'Pembelian berhasil');
             redirect(site_url('public/produk'), 'refresh');
         } else {
@@ -60,6 +58,7 @@ class Produk extends CI_Controller
         $data['current_user'] = $this->auth_model->current_user();
         $data['produk'] = $produk->getById($this->secure->decrypt_url($id));
         $data['jumlah'] = $jumlah;
+        if (!isset($id) || !$jumlah || $jumlah <= 0 || $jumlah > $data['produk']->stok) redirect('produk');
         if (!$data["produk"]) show_404();
 
         $this->load->view("public/checkout", $data);

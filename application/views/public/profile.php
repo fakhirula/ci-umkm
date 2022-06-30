@@ -85,7 +85,7 @@
                         <div class="card rounded-0 mb-4" id="change-pw">
                             <div class="card-header text-dark">Change Password</div>
                             <div class="card-body">
-                                <form class="user" method="POST" action="<?= base_url('admin/profile/change_password') ?>">
+                                <form class="user" method="POST" action="<?= base_url('public/profile/change_password') ?>">
                                     <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                     <!-- Form Group (old password)-->
                                     <div class="mb-3">

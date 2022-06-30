@@ -1,4 +1,7 @@
 <?php
+
+use LDAP\Result;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pembelian extends CI_Controller
@@ -33,11 +36,15 @@ class Pembelian extends CI_Controller
     public function add()
     {
         $pembelian = $this->pembelian_model;
+        $produk = $this->produk_model;
         $validation = $this->form_validation;
         $validation->set_rules($pembelian->rules());
 
+        $stok = $this->produk_model->getStok($this->input->post('produk_id'));
+
         if ($validation->run()) {
             $pembelian->save();
+            $produk->tambahStok($stok);
             $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
         } else {
             $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));

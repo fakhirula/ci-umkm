@@ -9,23 +9,24 @@
                 <form action="<?= site_url('admin/' . $this->uri->segment(2) . '/add') ?>" method="POST">
                     <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="mb-3">
-                        <label class="small mb-1" for="tanggal">Tanggal</label>
-                        <input class="form-control" id="tanggal" name="tanggal" type="date" placeholder="Tanggal" required autofocus />
-                    </div>
-                    <div class="mb-3">
                         <label class="small mb-1" for="jumlah">Jumlah Pesanan</label>
                         <input class="form-control" id="jumlah" name="jumlah" type="number" placeholder="Jumlah Pesanan" required autofocus />
                     </div>
                     <div class="mb-3">
-                        <label class="small mb-1" for="harga">Harga</label>
-                        <input class="form-control" id="harga" name="harga" type="number" placeholder="Harga" required autofocus />
-                    </div>
+                        <label class="small mb-1" for="harga">Harga Beli</label>
+                        <select id="harga" name="harga" class="form-select" aria-label="Default select example">
+                            <option selected disabled>Pilih Produk:</option>
+                            <?php foreach ($produk as $row) : ?>
+                                <option value="<?= intval($row->harga_beli); ?>"><?= $row->harga_beli; ?> - <?= $row->nama; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>                    
                     <div class="mb-3">
                         <label class="small mb-1" for="produk_id">Produk ID</label>
                         <select id="produk_id" name="produk_id" class="form-select" aria-label="Default select example">
                             <option selected disabled>Pilih Produk ID:</option>
                             <?php foreach ($produk as $row) : ?>
-                                <option value="<?= $row->id; ?>"><?= $row->nama; ?></option>
+                                <option value="<?= $row->id; ?>"><?= $row->id; ?> - <?= $row->nama; ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

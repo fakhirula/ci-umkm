@@ -101,8 +101,8 @@
                                 <label class="form-check-label" for="transfer">Transfer Bank</label>
                             </div>
                             <div class="form-check">
-                                <input id="agen" name="paymentMethod" type="radio" class="form-check-input" required>
-                                <label class="form-check-label" for="agen">Agen Terdekat</label>
+                                <input id="mitra" name="paymentMethod" type="radio" class="form-check-input" required>
+                                <label class="form-check-label" for="mitra">Mitra SELIR.ID</label>
                             </div>
                             <div class="form-check">
                                 <input id="minimarket" name="paymentMethod" type="radio" class="form-check-input" required>
