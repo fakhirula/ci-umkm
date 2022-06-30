@@ -27,7 +27,7 @@
                     <p class="lead"><?= $produk->deskripsi; ?></p>
                     <p class="fs-6 fw-light mb-1">Stok tersedia: <?= $produk->stok; ?></p>
                     <form action="<?= site_url('public/produk/checkout/' . $this->secure->encrypt_url($produk->id)) ?>" method="GET" class="d-flex">
-                        <input class="form-control rounded-0 text-center me-3" id="kuantitas" name="kuantitas" type="number" value="1" min="1" max="<?= $produk->stok; ?>" />
+                        <input class="form-control rounded-0 text-center me-3" id="jumlah" name="jumlah" type="number" value="1" min="1" max="<?= $produk->stok; ?>" />
                         <button class="btn btn-dark rounded-0 flex-shrink-0" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Beli Sekarang!

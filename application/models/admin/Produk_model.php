@@ -87,6 +87,14 @@ class Produk_model extends CI_Model
         return $this->db->update($this->table, $this, array('id' => $this->id));
     }
 
+    public function updateStok()
+    {
+        $post = $this->input->post();
+        $this->id = $this->secure->decrypt_url($post['produk_id']);
+        $this->stok = $post['stok'] - $post['jumlah'];
+        return $this->db->update($this->table, $this, array('id' => $this->id));
+    }
+
     public function delete($id)
     {
         return $this->db->delete($this->table, array('id' => $id));

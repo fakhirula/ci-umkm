@@ -32,14 +32,24 @@ class Produk extends CI_Controller
         $this->load->view("public/detail_produk", $data);
     }
 
-    public function checkout($id = null, $kuantitas = null)
+    public function checkout($id = null, $jumlah = null)
     {
-        $kuantitas = $this->input->get_post('kuantitas');
-        if (!isset($id) || !$kuantitas) redirect('produk');
+        $jumlah = $this->input->get('jumlah');
+        if (!isset($id) || !$jumlah || $jumlah < 0) redirect('produk');
 
         $pesanan = $this->pesanan_model;
+        $produk = $this->produk_model;
         $validation = $this->form_validation;
         $validation->set_rules($pesanan->rules());
+
+        if ($validation->run()) {
+            $pesanan->save();
+            $produk->updateStok();
+            $this->session->set_flashdata('alert-success', 'Pembelian berhasil');
+            redirect(site_url('public/produk'), 'refresh');
+        } else {
+            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
+        }
 
         // Check login information
         $current_user = $this->auth_model->current_user();
@@ -47,13 +57,9 @@ class Produk extends CI_Controller
             redirect('auth/login');
         }
 
-        $produk = $this->produk_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($produk->rules());
-
         $data['current_user'] = $this->auth_model->current_user();
         $data['produk'] = $produk->getById($this->secure->decrypt_url($id));
-        $data['kuantitas'] = $kuantitas;
+        $data['jumlah'] = $jumlah;
         if (!$data["produk"]) show_404();
 
         $this->load->view("public/checkout", $data);

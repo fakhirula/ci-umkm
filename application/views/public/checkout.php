@@ -25,32 +25,39 @@
                                 <h6 class="my-0"><?= $produk->nama; ?></h6>
                                 <small class="text-muted"><?= $produk->deskripsi; ?></small>
                             </div>
-                            <h6 class="my-0"><?= $kuantitas . 'x' ?> Rp<?= number_format($produk->harga_jual * $kuantitas, 0, ',', '.'); ?></h6>
+                            <h6 class="my-0"><?= $jumlah . 'x' ?> Rp<?= number_format($produk->harga_jual * $jumlah, 0, ',', '.'); ?></h6>
                         </li>
                     </ul>
 
                     <form class="card p-2">
                         <div class="input-group">
                             <input type="text" <?= set_value('redeem'); ?> id="redeem" name="redeem" class="form-control" placeholder="Promo code">
-                            <a onclick="
+                            <button type="submit" onclick="
                             Swal.fire(
                             'Success',
                             'Kode berhasil digunakan',
                             'success'
-                            )" class="btn btn-dark">Redeem</a>
+                            )" class="btn btn-dark">Redeem</button>
                         </div>
                     </form>
                 </div>
+                <?php if ($this->session->flashdata('alert-error')) : ?>
+                    <div class="alert alert-danger mt-2" role="alert">
+                        <?= $this->session->flashdata('alert-error') ?>
+                    </div>
+                <?php endif; ?>
                 <div class="col-md-7 col-lg-8">
                     <h4 class="mb-3">Alamat Pengiriman</h4>
-                    <form action="" method="POST">
+                    <form action="<?php base_url('public/produk/checkout') ?>" method="POST">
                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                         <input type="hidden" name="produk_id" id="produk_id" value="<?= $this->secure->encrypt_url($produk->id) ?>">
                         <input type="hidden" name="users_id" id="users_id" value="<?= $this->secure->encrypt_url($current_user->id) ?>">
+                        <input type="hidden" name="jumlah" id="jumlah" value="<?= intval($jumlah) ?>" type="number" readonly>
+                        <input type="hidden" name="stok" id="stok" value="<?= intval($produk->stok) ?>" type="number" readonly>
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="fullname" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="fullname" placeholder="" value="" required>
+                                <input type="text" class="form-control" id="fullname" placeholder="Your Name" required autofocus>
                                 <div class="invalid-feedback">
                                     Valid nama lengkap is required.
                                 </div>
@@ -77,7 +84,7 @@
 
                             <div class="col-12">
                                 <label for="address" class="form-label">Alamat Lengkap</label>
-                                <input type="text" class="form-control" id="address" placeholder="Jalan Kebagusan Raya rt.01/02 no.03 Sukmajaya Depok" required>
+                                <input type="text" class="form-control" id="address" placeholder="Jalan Kebagusan Raya rt.01/02 no.03 Sukmajaya Depok" required autofocus>
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
