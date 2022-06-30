@@ -60,4 +60,4 @@ $route['produk/detail_produk'] = 'public/produk/detail_produk';
 $route['produk/checkout'] = 'public/produk/checkout';
 $route['kategori'] = 'public/kategori';
 $route['tentang'] = 'public/tentang';
-$route['suplier'] = 'public/suplier';
+$route['faq'] = 'public/faq';

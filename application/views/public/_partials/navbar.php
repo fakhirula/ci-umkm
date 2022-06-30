@@ -8,7 +8,7 @@
             <li><a href="<?= base_url('produk') ?>" class="nav-link px-2 link-light">Produk</a></li>
             <li><a href="<?= base_url('kategori') ?>" class="nav-link px-2 link-light">Kategori</a></li>
             <li><a href="<?= base_url('tentang') ?>" class="nav-link px-2 link-light">Tentang</a></li>
-            <li><a href="<?= base_url('suplier') ?>" class="nav-link px-2 link-light">Suplier</a></li>
+            <li><a href="<?= base_url('faq') ?>" class="nav-link px-2 link-light">FAQs</a></li>
         </ul>
 
         <div class="col-md-3 text-end">

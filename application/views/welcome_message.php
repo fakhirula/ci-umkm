@@ -25,7 +25,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-0 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+					<div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded my-5" src="<?= base_url('assets/images/ilustrations/home.jpg') ?>" alt="Introduction SELIR.ID" /></div>
 				</div>
 			</div>
 		</header>

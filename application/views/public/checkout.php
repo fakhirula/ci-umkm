@@ -101,6 +101,10 @@
                                 <label class="form-check-label" for="transfer">Transfer Bank</label>
                             </div>
                             <div class="form-check">
+                                <input id="virtualaccount" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                                <label class="form-check-label" for="virtualaccount">Virtual Account</label>
+                            </div>
+                            <div class="form-check">
                                 <input id="mitra" name="paymentMethod" type="radio" class="form-check-input" required>
                                 <label class="form-check-label" for="mitra">Mitra SELIR.ID</label>
                             </div>

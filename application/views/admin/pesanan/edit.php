@@ -61,7 +61,7 @@
                                         <input id="id" name="id" type="hidden" value="<?= $this->secure->encrypt_url($pesanan->id) ?>" required readonly />
                                         <div class="mb-3">
                                             <label class="small mb-1" for="tanggal">Tanggal</label>
-                                            <input class="form-control <?php echo form_error('tanggal') ? 'is-invalid' : '' ?>" id="tanggal" name="tanggal" type="text" value="<?= $pesanan->tanggal ?>" required />
+                                            <input class="form-control <?php echo form_error('tanggal') ? 'is-invalid' : '' ?>" id="tanggal" name="tanggal" type="text" value="<?= $pesanan->tanggal ?>" required readonly />
                                             <div class="invalid-feedback">
                                                 <?php echo form_error('tanggal') ?>
                                             </div>
