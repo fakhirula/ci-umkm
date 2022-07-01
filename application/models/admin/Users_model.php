@@ -61,4 +61,9 @@ class Users_model extends CI_Model
         );
         return $this->db->update($this->table, $data, array('id' => $current_user->id));
     }
+
+    public function delete($id)
+    {
+        return $this->db->delete($this->table, array('id' => $id));
+    }
 }

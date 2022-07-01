@@ -25,7 +25,7 @@
                                 <h6 class="my-0"><?= $produk->nama; ?></h6>
                                 <small class="text-muted"><?= $produk->deskripsi; ?></small>
                             </div>
-                            <h6 class="my-0"><?= $jumlah . 'x' ?> Rp<?= number_format($produk->harga_jual * $jumlah, 0, ',', '.'); ?></h6>
+                            <h6 class="my-0"><?= $this->secure->decrypt_url($jumlah) . 'x' ?> Rp<?= number_format($produk->harga_jual * $this->secure->decrypt_url($jumlah), 0, ',', '.'); ?></h6>
                         </li>
                     </ul>
 
@@ -52,8 +52,7 @@
                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                         <input type="hidden" name="produk_id" id="produk_id" value="<?= $this->secure->encrypt_url($produk->id) ?>">
                         <input type="hidden" name="users_id" id="users_id" value="<?= $this->secure->encrypt_url($current_user->id) ?>">
-                        <input type="hidden" name="jumlah" id="jumlah" value="<?= intval($jumlah) ?>" type="number" readonly>
-                        <input type="hidden" name="stok" id="stok" value="<?= intval($produk->stok) ?>" type="number" readonly>
+                        <input type="hidden" name="jumlah" id="jumlah" value="<?= $this->secure->encrypt_url($jumlah) ?>" type="number" readonly>
                         <div class="row g-3">
                             <div class="col-12">
                                 <label for="fullname" class="form-label">Nama Lengkap</label>
@@ -62,7 +61,6 @@
                                     Valid nama lengkap is required.
                                 </div>
                             </div>
-
                             <div class="col-sm-6">
                                 <label for="username" class="form-label">Username</label>
                                 <div class="input-group has-validation">

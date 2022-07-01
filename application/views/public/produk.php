@@ -24,6 +24,7 @@
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 ">
                 <?php foreach ($produk as $row) : ?>
+                    <?php if ($row->stok > 0) : ?>
                     <div class="col mb-5">
                         <div class="card h-100 rounded-0">
                             <!-- Product image-->
@@ -45,6 +46,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         </div>

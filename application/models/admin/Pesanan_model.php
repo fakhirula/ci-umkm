@@ -10,7 +10,7 @@ class Pesanan_model extends CI_Model
             [
                 'field' => 'jumlah',
                 'label' => 'Jumlah',
-                'rules' => 'required|integer'
+                'rules' => 'required'
             ],
             [
                 'field' => 'users_id',
@@ -36,13 +36,13 @@ class Pesanan_model extends CI_Model
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
 
-    public function save()
+    public function save($jumlah)
     {
         date_default_timezone_set("Asia/Jakarta");
 
         $post = $this->input->post();
         $this->tanggal = date('Y-m-d');
-        $this->jumlah = $post['jumlah'];
+        $this->jumlah = $jumlah;
         $this->users_id = $this->secure->decrypt_url($post['users_id']);
         $this->produk_id = $this->secure->decrypt_url($post['produk_id']);
 

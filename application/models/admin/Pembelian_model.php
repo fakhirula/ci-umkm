@@ -13,11 +13,6 @@ class Pembelian_model extends CI_Model
                 'rules' => 'required|integer'
             ],
             [
-                'field' => 'harga',
-                'label' => 'Harga',
-                'rules' => 'required|integer'
-            ],
-            [
                 'field' => 'produk_id',
                 'label' => 'Produk_id',
                 'rules' => 'required|integer'
@@ -41,14 +36,14 @@ class Pembelian_model extends CI_Model
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
 
-    public function save()
+    public function save($harga)
     {
         date_default_timezone_set("Asia/Jakarta");
 
         $post = $this->input->post();
         $this->tanggal = date('Y-m-d');
         $this->jumlah = $post['jumlah'];
-        $this->harga = $post['harga'] * $post['jumlah'];
+        $this->harga = $harga * $post['jumlah'];
         $this->produk_id = $post['produk_id'];
         $this->suplier_id = $post['suplier_id'];
 

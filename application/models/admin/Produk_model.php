@@ -56,6 +56,12 @@ class Produk_model extends CI_Model
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
 
+    public function getRandomLimit()
+    {
+        $query = $this->db->order_by('rand()')->limit(3)->get($this->table);
+        return $query->result();
+    }
+
     public function save($data)
     {
         $post = $this->input->post();
@@ -87,11 +93,11 @@ class Produk_model extends CI_Model
         return $this->db->update($this->table, $this, array('id' => $this->id));
     }
 
-    public function kurangiStok()
+    public function kurangiStok($stok, $jumlah)
     {
         $post = $this->input->post();
         $this->id = $this->secure->decrypt_url($post['produk_id']);
-        $this->stok = $post['stok'] - $post['jumlah'];
+        $this->stok = intval($stok) - $jumlah;
         return $this->db->update($this->table, $this, array('id' => $this->id));
     }
 
@@ -101,12 +107,6 @@ class Produk_model extends CI_Model
         $this->id = $post['produk_id'];
         $this->stok = intval($stok) + $post['jumlah'];
         return $this->db->update($this->table, $this, array('id' => $this->id));
-    }
-
-    public function getStok($produk_id)
-    {
-        $query = $this->db->select('stok')->where('id', $produk_id)->get($this->table)->row_array();
-        return $query['stok'];
     }
 
     public function delete($id)

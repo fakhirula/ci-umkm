@@ -28,22 +28,6 @@ class Pesanan extends CI_Controller
         $this->load->view('admin/pesanan/index', $data);
     }
 
-    public function add()
-    {
-        $pesanan = $this->pesanan_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($pesanan->rules());
-
-        if ($validation->run()) {
-            $pesanan->save();
-            $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
-        } else {
-            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
-        }
-
-        redirect(site_url('admin/pesanan'));
-    }
-
     public function edit($id = null)
     {
         if (!isset($id)) redirect('admin/pesanan');

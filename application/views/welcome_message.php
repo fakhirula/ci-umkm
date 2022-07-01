@@ -20,7 +20,9 @@
 							<h1 class="display-5 fw-bolder text-white mb-2">LESTARI INDONESIA KU #AYOPAKAIBATIK</h1>
 							<p class="lead fw-normal text-white-50 mb-4">Mari ikut bersama SELIR.ID dalam rangka melestarikan budaya nusantara ke kancah Internasional. Dapatkan diskon hingga 50% untuk pelanggan baru! Ayo daftar sekarang!</p>
 							<div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-								<a class="btn btn-light rounded-0 btn-lg px-4 me-sm-3" href="<?= base_url('auth/registration') ?>">Daftar</a>
+								<?php if (!$current_user) : ?>
+									<a class="btn btn-light rounded-0 btn-lg px-4 me-sm-3" href="<?= base_url('auth/registration') ?>">Daftar Sekarang</a>
+								<?php endif; ?>
 								<a class="btn btn-outline-light rounded-0 btn-lg px-4" href="#features">Learn More</a>
 							</div>
 						</div>
@@ -131,12 +133,13 @@
 				<div class="row gx-5">
 					<!-- Section-->
 					<?php foreach ($produk as $row) : ?>
+						<?php if ($row->stok > 0) : ?>
 						<div class="col-lg-4 mb-5">
 							<div class="card h-100 shadow border-0 rounded-0">
 								<img class="card-img-top rounded-0" src="<?= base_url('assets/images/produk/' . $row->foto) ?>" alt="..." />
 								<div class="card-body p-4">
 									<div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-									<a class="text-decoration-none link-dark stretched-link" href="<?= site_url('detail_produk/' . $this->secure->encrypt_url($row->id)) ?>">
+									<a class="text-decoration-none link-dark stretched-link" href="<?= site_url('public/produk/detail_produk/' . $this->secure->encrypt_url($row->id)) ?>">
 										<h5 class="card-title mb-3"><?= $row->nama; ?></h5>
 									</a>
 									<p class="card-text mb-0"><?= $row->deskripsi; ?></p>
@@ -154,6 +157,7 @@
 								</div>
 							</div>
 						</div>
+						<?php endif; ?>
 					<?php endforeach; ?>
 				</div>
 				<!-- Call to action-->

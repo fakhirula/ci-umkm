@@ -13,8 +13,8 @@
 
         <div class="col-md-3 text-end">
             <?php if (!$current_user) : ?>
-                <a href="<?= base_url('auth/login') ?>" class="btn btn-outline-light rounded-0 me-2">Login</a>
-                <a href="<?= base_url('auth/registration') ?>" class="btn btn-light rounded-0">Sign-up</a>
+                <a href="<?= base_url('auth/login') ?>" class="btn btn-light rounded-0 me-2">Login</a>
+                <a href="<?= base_url('auth/registration') ?>" class="btn btn-outline-light rounded-0">Sign-up</a>
             <?php endif; ?>
             <?php if ($current_user) : ?>
                 <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4" style="list-style-type: none;">

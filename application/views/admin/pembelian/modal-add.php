@@ -11,16 +11,7 @@
                     <div class="mb-3">
                         <label class="small mb-1" for="jumlah">Jumlah Pesanan</label>
                         <input class="form-control" id="jumlah" name="jumlah" type="number" placeholder="Jumlah Pesanan" required autofocus />
-                    </div>
-                    <div class="mb-3">
-                        <label class="small mb-1" for="harga">Harga Beli</label>
-                        <select id="harga" name="harga" class="form-select" aria-label="Default select example">
-                            <option selected disabled>Pilih Produk:</option>
-                            <?php foreach ($produk as $row) : ?>
-                                <option value="<?= intval($row->harga_beli); ?>"><?= $row->harga_beli; ?> - <?= $row->nama; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>                    
+                    </div>                 
                     <div class="mb-3">
                         <label class="small mb-1" for="produk_id">Produk ID</label>
                         <select id="produk_id" name="produk_id" class="form-select" aria-label="Default select example">

@@ -22,15 +22,13 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('admin/produk_model');
-		$this->load->model('admin/jenisproduk_model');
 		$this->load->model('auth/auth_model');
 	}
 
 	public function index()
 	{
 		$data['current_user'] = $this->auth_model->current_user();
-		$data['produk'] = $this->produk_model->getAll();
-		$data['jenis_produk'] = $this->jenisproduk_model->getAll();
+		$data['produk'] = $this->produk_model->getRandomLimit();
 		$this->load->view('welcome_message', $data);
 	}
 }

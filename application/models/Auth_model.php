@@ -68,6 +68,8 @@ class Auth_model extends CI_Model
 
     public function createAccount()
     {
+        date_default_timezone_set("Asia/Jakarta");
+        
         $post = $this->input->post();
         $this->username = $post['username'];
         $this->password = password_hash($post['password'], PASSWORD_DEFAULT);

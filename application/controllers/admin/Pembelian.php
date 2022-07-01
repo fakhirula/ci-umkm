@@ -40,11 +40,12 @@ class Pembelian extends CI_Controller
         $validation = $this->form_validation;
         $validation->set_rules($pembelian->rules());
 
-        $stok = $this->produk_model->getStok($this->input->post('produk_id'));
+        $decrypt_id = $this->produk_model->getById($this->input->post('produk_id'));
+        $getStok = $decrypt_id->stok;
+        $getHargaBeli = $decrypt_id->harga_beli;
 
         if ($validation->run()) {
-            $pembelian->save();
-            $produk->tambahStok($stok);
+            $pembelian->save($getHargaBeli) && $produk->tambahStok($getStok);
             $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
         } else {
             $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
