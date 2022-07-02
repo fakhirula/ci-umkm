@@ -99,7 +99,7 @@
                                                             Nonaktifkan
                                                         </a>
                                                     <?php endif; ?>
-                                                    <a onclick="confirm('Kamu yakin ingin menghapus ini?')" href="<?= site_url('admin/users/delete/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-datatable btn-icon btn-danger"><i data-feather="trash-2"></i></a>
+                                                    <a onclick="deleteConfirm('<?= site_url('admin/users/delete/' . $this->secure->encrypt_url($row->id)) ?>')" href="#!" id="btn-delete" class="btn btn-datatable btn-icon btn-danger"><i data-feather="trash-2"></i></a>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>

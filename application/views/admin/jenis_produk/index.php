@@ -75,7 +75,7 @@
                                             <td><?= $row->nama ?></td>
                                             <td>
                                                 <a href="<?= site_url('admin/jenis_produk/edit/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-datatable btn-icon btn-warning me-2"><i data-feather="edit"></i></a>
-                                                <a onclick="confirm('Kamu yakin ingin menghapus ini?')" href="<?= site_url('admin/jenis_produk/delete/' . $this->secure->encrypt_url($row->id)) ?>" class="btn btn-datatable btn-icon btn-danger"><i data-feather="trash-2"></i></a>
+                                                <a onclick="deleteConfirm('<?= site_url('admin/jenis_produk/delete/' . $this->secure->encrypt_url($row->id)) ?>')" href="#!" id="btn-delete" class="btn btn-datatable btn-icon btn-danger"><i data-feather="trash-2"></i></a>
                                             </td>
                                         </tr>
                                     <?php

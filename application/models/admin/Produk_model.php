@@ -10,7 +10,7 @@ class Produk_model extends CI_Model
             [
                 'field' => 'kode',
                 'label' => 'Kode',
-                'rules' => 'required|min_length[3]|max_length[4]'
+                'rules' => 'required|min_length[3]'
             ],
             [
                 'field' => 'nama',
@@ -81,7 +81,7 @@ class Produk_model extends CI_Model
     {
         $post = $this->input->post();
         $this->id = $this->secure->decrypt_url($post['id']);
-        $this->kode = strtoupper($post['kode']);
+        $this->kode = $this->secure->decrypt_url($post['kode']);
         $this->nama = $post['nama'];
         $this->stok = $post['stok'];
         $this->harga_beli = $post['harga_beli'];

@@ -42,7 +42,7 @@ class Produk extends CI_Controller
             $config['upload_path']          = FCPATH . '/assets/images/produk/';
             $config['allowed_types']        = 'jpg|jpeg|png';
             $config['overwrite']            = TRUE;
-            $config['max_size']             = 1024; // 1024kB
+            $config['max_size']             = 1024; // 1MB
             $config['file_name']            = $gambar;
             $config['max_width']            = 1080; // in Pixel
             $config['max_height']           = 1080;
@@ -76,15 +76,14 @@ class Produk extends CI_Controller
         $produk = $this->produk_model;
         $validation = $this->form_validation;
         $validation->set_rules($produk->rules());
-        // $validation->set_rules('kode', 'Kode', 'required|min_length[3]|max_length[4]|matches[kode]');
 
         if ($validation->run()) {
             $post = $this->input->post();
-            $gambar = $post['kode'];
+            $gambar = $this->secure->decrypt_url($post['kode']);
             $config['upload_path']          = FCPATH . '/assets/images/produk/';
             $config['allowed_types']        = 'jpg|jpeg|png';
             $config['overwrite']            = TRUE;
-            $config['max_size']             = 1024; // 1024kB
+            $config['max_size']             = 1024; // 1MB
             $config['file_name']            = $gambar;
             $config['max_width']            = 1080; // in Pixel
             $config['max_height']           = 1080;
@@ -124,8 +123,8 @@ class Produk extends CI_Controller
     public function delete($id = null)
     {
         if (!isset($id)) show_404();
-        $try = $this->produk_model->getById($this->secure->decrypt_url($id));
-        $foto = $try->foto;
+        $del = $this->produk_model->getById($this->secure->decrypt_url($id));
+        $foto = $del->foto;
         unlink(FCPATH . '/assets/images/produk/' . $foto);
 
         if ($this->produk_model->delete($this->secure->decrypt_url($id))) {

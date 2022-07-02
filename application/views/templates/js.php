@@ -15,14 +15,15 @@
 
 <script>
     function deleteConfirm(url) {
-        $('#btn-delete').attr('href', url);
-        $('#deleteModal').modal();
+        if (prompt("Ketik 'KONFIRMASI' jika ingin menghapus data") == "KONFIRMASI") {
+            window.location.href = url;
+        }
     }
 
     <?php if ($this->session->flashdata('alert-success')) : ?>
         Swal.fire({
             icon: 'success',
-            title: 'Yayy!',
+            title: 'Success!',
             text: '<?= $this->session->flashdata('alert-success'); ?>',
         })
     <?php endif; ?>

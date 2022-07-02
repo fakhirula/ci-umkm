@@ -59,13 +59,7 @@
                                     <form action="" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                                         <input id="id" name="id" type="hidden" value="<?= $this->secure->encrypt_url($produk->id) ?>" required readonly />
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="kode">Kode</label>
-                                            <input class="form-control <?php echo form_error('kode') ? 'is-invalid' : '' ?>" id="kode" name="kode" type="text" value="<?= $produk->kode ?>" required readonly />
-                                            <div class="invalid-feedback">
-                                                <?php echo form_error('kode') ?>
-                                            </div>
-                                        </div>
+                                        <input id="kode" name="kode" type="hidden" value="<?= $this->secure->encrypt_url($produk->kode) ?>" required readonly />
                                         <div class="mb-3">
                                             <label class="small mb-1" for="nama">Nama Produk</label>
                                             <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" id="nama" name="nama" type="text" value="<?= $produk->nama ?>" required />
