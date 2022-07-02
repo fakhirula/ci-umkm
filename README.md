@@ -1,5 +1,5 @@
 <h1 align="center">SELIR.ID - UMKM</h1>
-<p align="center">SELIR.ID is the largest batik showroom in Indonesia. The word "SELIR" is taken from the meaning of "King's umpteenth wife". This also means that SELIR.ID is a reseller who takes processed goods from traditional batik craftsmen. Please use it for learning media, made using Bootstrap v5.1.3, SB Admin Pro and Font Awesome v6.</p>
+<p align="center">SELIR.ID is the largest batik showroom in Indonesia. The word "SELIR" is taken from the meaning of "King's umpteenth wife". This also means that SELIR.ID is a reseller who takes processed goods from traditional batik craftsmen. Please use it for learning media, made using Codeigniter v3.1.13, Bootstrap v5.1.3, SB Admin Pro and Font Awesome v6.</p>
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-green.svg?style=flat-square)](#contributors-)
 ![GitHub last commit](https://img.shields.io/github/last-commit/fakhirula/ci-umkm.svg?style=flat-square)
