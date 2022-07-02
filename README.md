@@ -19,6 +19,6 @@ SELIR.ID is under MIT License.
 ## About the Author
 SELIR.ID is created by:
 1. 0110221236 - Fakhirul Akmal
-2. 0110221231 - Fauzan Rizqi Ardiansyah
+2. 0110221234 - Fauzan Rizqi Ardiansyah
 3. 0110221239 - Irfan Rian Fahmi
 4. 0110221241 - Sandy Palendra
