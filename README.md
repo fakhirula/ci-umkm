@@ -11,7 +11,7 @@
 ```bash
 git clone https://github.com/fakhirula/ci-umkm
 ```
-2. Open `ci-umkm/index.html` to see the website
+2. Open `http://localhost/ci-umkm/` to see the website
 
 ## License
 SELIR.ID is under MIT License.
