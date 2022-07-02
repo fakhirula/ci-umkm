@@ -46,12 +46,14 @@ class Produk extends CI_Controller
             $config['file_name']            = $gambar;
             $config['max_width']            = 1080; // in Pixel
             $config['max_height']           = 1080;
+            $config['min_width']            = 700; // in Pixel
+            $config['min_height']           = 700;
             $config['max_filename']         = 10;
 
             $this->load->library('upload', $config);
 
             if (!$this->upload->do_upload('foto')) {
-                $this->session->set_flashdata('alert-error', 'foto gagal diupload');
+                $this->session->set_flashdata('alert-error', $this->upload->display_errors());
             } else {
                 $uploaded_data = $this->upload->data();
                 $data['foto'] = $uploaded_data['file_name'];
@@ -86,27 +88,27 @@ class Produk extends CI_Controller
             $config['file_name']            = $gambar;
             $config['max_width']            = 1080; // in Pixel
             $config['max_height']           = 1080;
+            $config['min_width']            = 700; // in Pixel
+            $config['min_height']           = 700;
             $config['max_filename']         = 10;
 
             $this->load->library('upload', $config);
 
-            if (!$this->upload->do_upload('foto')) {
+            
+                if (!$this->upload->do_upload('foto')) {
+                    $data['foto'] = $post['gambar'];
+                    $produk->update($data);
+                    $this->session->set_flashdata('alert-error', $this->upload->display_errors());
+                } else {
+                    $uploaded_data = $this->upload->data();
+                    $data['foto'] = $uploaded_data['file_name'];
 
-                $post = $this->input->post();
-                $data['foto'] = $post['gambar'];
-                if ($produk->update($data)) {
-                    $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
-                    redirect(site_url('admin/produk'), 'refresh');
+                    if ($produk->update($data)) {
+                        $this->session->set_flashdata('alert-success', 'Data berhasil ditambahkan');
+                    }
                 }
-            } else {
-                $uploaded_data = $this->upload->data();
-                $data['foto'] = $uploaded_data['file_name'];
-
-                if ($produk->update($data)) {
-                    $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
-                    redirect(site_url('admin/produk'), 'refresh');
-                }
-            }
+            redirect(site_url('admin/produk'), 'refresh');
+            
         } else {
             $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
         }

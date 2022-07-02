@@ -65,7 +65,7 @@ class Produk_model extends CI_Model
     public function save($data)
     {
         $post = $this->input->post();
-        $this->kode = $post['kode'];
+        $this->kode = strtoupper($post['kode']);
         $this->nama = $post['nama'];
         $this->stok = $post['stok'];
         $this->harga_beli = $post['harga_beli'];
@@ -81,7 +81,7 @@ class Produk_model extends CI_Model
     {
         $post = $this->input->post();
         $this->id = $this->secure->decrypt_url($post['id']);
-        $this->kode = $post['kode'];
+        $this->kode = strtoupper($post['kode']);
         $this->nama = $post['nama'];
         $this->stok = $post['stok'];
         $this->harga_beli = $post['harga_beli'];

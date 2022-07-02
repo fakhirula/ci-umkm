@@ -97,7 +97,7 @@
                                         <div class="mb-3">
                                             <label class="small mb-1" for="foto">Foto</label>
                                             <input type="hidden" value="<?= $produk->foto ?>" name="gambar">
-                                            <input class="form-control <?php echo form_error('foto') ? 'is-invalid' : '' ?>" id="foto" name="foto" value="../assetts/images/ptoduk/<?= $produk->foto ?>" type="file" accept="image/png, image/jpeg, image/jpg" />
+                                            <input class="form-control <?php echo form_error('foto') ? 'is-invalid' : '' ?>" id="foto" name="foto" value="<?= $produk->foto ?>" type="file" accept="image/png, image/jpeg, image/jpg" />
                                             <div class="invalid-feedback">
                                                 <?php echo form_error('foto') ?>
                                             </div>
