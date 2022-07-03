@@ -38,7 +38,7 @@ class Produk extends CI_Controller
         if ($validation->run()) {
 
             $post = $this->input->post();
-            $gambar = $post['kode'];
+            $gambar = strtoupper($post['kode']);
             $config['upload_path']          = FCPATH . '/assets/images/produk/';
             $config['allowed_types']        = 'jpg|jpeg|png';
             $config['overwrite']            = TRUE;

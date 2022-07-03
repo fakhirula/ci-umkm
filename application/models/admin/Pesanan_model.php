@@ -49,18 +49,6 @@ class Pesanan_model extends CI_Model
         return $this->db->insert($this->table, $this);
     }
 
-    public function update()
-    {
-        $post = $this->input->post();
-        $this->id = $this->secure->decrypt_url($post['id']);
-        $this->tanggal = $post['tanggal'];
-        $this->jumlah = $post['jumlah'];
-        $this->users_id = $post['users_id'];
-        $this->produk_id = $post['produk_id'];
-
-        return $this->db->update($this->table, $this, array('id' => $this->id));
-    }
-
     public function delete($id)
     {
         return $this->db->delete($this->table, array('id' => $id));

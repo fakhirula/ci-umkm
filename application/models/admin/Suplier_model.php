@@ -30,7 +30,7 @@ class Suplier_model extends CI_Model
             [
                 'field' => 'telpon',
                 'label' => 'Telpon',
-                'rules' => 'required|min_length[7]|max_length[15]'
+                'rules' => 'required|min_length[7]|max_length[20]'
             ],
         ];
     }

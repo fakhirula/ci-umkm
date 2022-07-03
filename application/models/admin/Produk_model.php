@@ -56,9 +56,9 @@ class Produk_model extends CI_Model
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
 
-    public function getRandomLimit()
+    public function getRandomLimit($limit)
     {
-        $query = $this->db->order_by('rand()')->limit(3)->get($this->table);
+        $query = $this->db->order_by('rand()')->limit($limit)->get($this->table);
         return $query->result();
     }
 

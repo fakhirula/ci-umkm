@@ -21,7 +21,7 @@
                     <div class="small mb-1">SKU: <?= $produk->kode; ?></div>
                     <h1 class="display-5 fw-bolder"><?= $produk->nama; ?></h1>
                     <div class="fs-5 mb-4">
-                        <span class="text-decoration-line-through text-muted">Rp<?= number_format($produk->harga_jual * 2, 0, ',', '.'); ?></span>
+                        <span class="text-decoration-line-through text-muted">Rp<?= number_format(($produk->harga_jual - $produk->harga_beli) + $produk->harga_jual, 0, ',', '.'); ?></span>
                         <span class="fs-1 fw-bold">Rp<?= number_format($produk->harga_jual, 0, ',', '.'); ?></span>
                     </div>
                     <p class="lead"><?= $produk->deskripsi; ?></p>
@@ -55,7 +55,7 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder"><?= $row->nama; ?></h5>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">Rp<?= number_format($row->harga_jual * 2, 0, ',', '.'); ?></span>
+                                    <span class="text-decoration-line-through text-muted">Rp<?= number_format(($produk->harga_jual - $produk->harga_beli) + $produk->harga_jual, 0, ',', '.'); ?></span>
                                     Rp<?= number_format($row->harga_jual, 0, ',', '.'); ?>
                                 </div>
                             </div>

@@ -130,33 +130,34 @@
 						</div>
 					</div>
 				</div>
+				<?php if (!$produk) echo '<h1 class="display-6 fw-bolder text-center text-red">Produk Tidak Ditemukan!</h1>'; ?>
 				<div class="row gx-5">
 					<!-- Section-->
 					<?php foreach ($produk as $row) : ?>
 						<?php if ($row->stok > 0) : ?>
-						<div class="col-lg-4 mb-5">
-							<div class="card h-100 shadow border-0 rounded-0">
-								<img class="card-img-top rounded-0" src="<?= base_url('assets/images/produk/' . $row->foto) ?>" alt="..." />
-								<div class="card-body p-4">
-									<div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-									<a class="text-decoration-none link-dark stretched-link" href="<?= site_url('public/produk/detail_produk/' . $this->secure->encrypt_url($row->id)) ?>">
-										<h5 class="card-title mb-3"><?= $row->nama; ?></h5>
-									</a>
-									<p class="card-text mb-0"><?= $row->deskripsi; ?></p>
-								</div>
-								<div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-									<div class="d-flex align-items-end justify-content-between">
-										<div class="d-flex align-items-center">
-											<img class="avatar rounded-circle me-3" src="<?= base_url('assets/images/profiles/profile-1.png') ?>" alt="..." />
-											<div class="small">
-												<div class="fw-bold">Administrator</div>
-												<div class="text-muted">April 2, 2022 &middot; 10 min read</div>
+							<div class="col-lg-4 mb-5">
+								<div class="card h-100 shadow border-0 rounded-0">
+									<img class="card-img-top rounded-0" src="<?= base_url('assets/images/produk/' . $row->foto) ?>" alt="..." />
+									<div class="card-body p-4">
+										<div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
+										<a class="text-decoration-none link-dark stretched-link" href="<?= site_url('public/produk/detail_produk/' . $this->secure->encrypt_url($row->id)) ?>">
+											<h5 class="card-title mb-3"><?= $row->nama; ?></h5>
+										</a>
+										<p class="card-text mb-0"><?= $row->deskripsi; ?></p>
+									</div>
+									<div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+										<div class="d-flex align-items-end justify-content-between">
+											<div class="d-flex align-items-center">
+												<img class="avatar rounded-circle me-3" src="<?= base_url('assets/images/profiles/profile-1.png') ?>" alt="..." />
+												<div class="small">
+													<div class="fw-bold">Administrator</div>
+													<div class="text-muted">April 2, 2022 &middot; 10 min read</div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 						<?php endif; ?>
 					<?php endforeach; ?>
 				</div>

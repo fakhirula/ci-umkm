@@ -54,32 +54,6 @@ class Pembelian extends CI_Controller
         redirect(site_url('admin/pembelian'));
     }
 
-    public function edit($id = null)
-    {
-        if (!isset($id)) redirect('admin/pembelian');
-
-        $pembelian = $this->pembelian_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($pembelian->rules());
-
-        if ($validation->run()) {
-            if ($pembelian->update()) {
-                $this->session->set_flashdata('alert-success', 'Data berhasil diedit');
-                redirect(site_url('admin/pembelian'), 'refresh');
-            }
-        } else {
-            $this->session->set_flashdata('alert-error', validation_errors('[invalid]: '));
-        }
-
-        $data['current_user'] = $this->auth_model->current_user();
-        $data["pembelian"] = $pembelian->getById($this->secure->decrypt_url($id));
-        $data['produk'] = $this->produk_model->getAll();
-        $data['suplier'] = $this->suplier_model->getAll();
-        if (!$data["pembelian"]) show_404();
-
-        $this->load->view("admin/pembelian/edit", $data);
-    }
-
     public function delete($id = null)
     {
         if (!isset($id)) show_404();

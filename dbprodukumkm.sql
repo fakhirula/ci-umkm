@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 26, 2022 at 02:45 PM
+-- Generation Time: Jul 03, 2022 at 07:57 AM
 -- Server version: 8.0.29
 -- PHP Version: 8.0.20
 
@@ -37,10 +37,10 @@ CREATE TABLE `jenis_produk` (
 --
 
 INSERT INTO `jenis_produk` (`id`, `nama`) VALUES
-(1, 'Tas'),
-(2, 'Sepatu'),
-(3, 'Perhiasan'),
-(4, 'Busana Muslimah');
+(19, 'Tas'),
+(20, 'Sepatu'),
+(21, 'Blangkon'),
+(22, 'Busana Wanita');
 
 -- --------------------------------------------------------
 
@@ -62,8 +62,7 @@ CREATE TABLE `pembelian` (
 --
 
 INSERT INTO `pembelian` (`id`, `tanggal`, `jumlah`, `harga`, `produk_id`, `suplier_id`) VALUES
-(1, '2022-06-12', 20, 100000, 1, 1),
-(2, '2022-06-12', 50, 30000, 2, 2);
+(25, '2022-07-03', 3, 900000, 29, 11);
 
 -- --------------------------------------------------------
 
@@ -84,7 +83,7 @@ CREATE TABLE `pesanan` (
 --
 
 INSERT INTO `pesanan` (`id`, `tanggal`, `jumlah`, `users_id`, `produk_id`) VALUES
-(1, '2022-06-12', 1, 2, 2);
+(43, '2022-07-03', 3, 2, 29);
 
 -- --------------------------------------------------------
 
@@ -109,8 +108,18 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `kode`, `nama`, `stok`, `harga_beli`, `harga_jual`, `foto`, `jenis_id`, `deskripsi`) VALUES
-(1, 'T001', 'Tas Trendy', 10, 100000, 120000, 'T001.jpg', 1, 'Tas Trendy Cocok dipakai bepergian multifungsi tersedia warna hitam,khaki,hijau,coklat'),
-(2, 'J001', 'Jilbab Anak', 10, 30000, 350000, 'J001.jpg', 4, 'Jilbab cantik buat anak usia 3-6 tahun tersedia warna pink,ungu,hijau,coklat');
+(27, 'P001', 'Sepatu Batik Parang Rusak Asli Yogyakarta', 15, 275000, 350000, 'P001.png', 20, 'Sepatu casual wanita dengan motif parang rusak asli dari Yogyakarta'),
+(28, 'P002', 'Sepatu Batik Parang Rusak Putih', 12, 285000, 350000, 'P002.png', 20, 'Sepatu sneakers batik motif parang rusak dominan warna putih asli Yogyakarta'),
+(29, 'P003', 'Blouse Batik Motif Bunga', 13, 300000, 465000, 'P003.png', 22, 'Blouse batik motif bunga hijau, bahan katun premium dengan toleransi ~2cm'),
+(30, 'P004', 'Blouse Casual Batik Modern Kombinasi', 5, 450000, 525000, 'P004.png', 22, 'Blouse casual dengan motif batik kombinasi gaya kekinian, cocok untuk acara'),
+(31, 'P005', 'Blouse Batik Motif Bunga Abstrak Biru', 5, 375000, 555000, 'P005.png', 22, 'Blouse dengan motif batik bunga abstrak warna biru, cocok untuk acara pernikahan mantan'),
+(32, 'P006', 'Blouse Batik Modern Motif Bunga Putih', 3, 480000, 570000, 'P006.png', 22, 'Blouse batik tema modern dengan motif bunga kombinasi warna putih, cocok untuk acara besar'),
+(33, 'P007', 'Sepatu Batik Casual Wanita Motif Burung', 22, 230000, 300000, 'P007.png', 20, 'Sepatu batik casual khusus wanita motif burung warna biru'),
+(34, 'P008', 'Blouse Sogan Burung Kombinasi Strip', 8, 420000, 595000, 'P008.png', 22, 'Blouse batik sogan burung terbang dengan kombinasi corak strip'),
+(35, 'P009', 'Tas Batik Modern Sekar Jagat', 9, 280000, 320000, 'P009.png', 19, 'Tas batik modern motif sekar jagat asli Yogyakarta warna putih'),
+(36, 'P010', 'Tas Batik Bunga Modern Soft', 13, 300000, 385000, 'P010.png', 19, 'Tas dengan motif bunga bertema modern dan elegan soft color'),
+(37, 'P011', 'Blangkon Mondolan Yogyakarta', 21, 95000, 185000, 'P011.png', 21, 'Blangkon batik dengan mondolan khas Yogyakarta'),
+(39, 'P012', 'Blouse Motif Batik Tambal Yogyakarta', 11, 410000, 530000, 'P012.png', 22, 'Blouse wanita dengan motif batik tambal asli Yogyakarta');
 
 -- --------------------------------------------------------
 
@@ -132,8 +141,10 @@ CREATE TABLE `suplier` (
 --
 
 INSERT INTO `suplier` (`id`, `nama`, `kota`, `kontak`, `alamat`, `telpon`) VALUES
-(1, 'CV Fikri', 'Majalengka', 'Ibu Eneng Tita', 'Jl. Sudirman No. 12 Majalengka Jawa Barat', NULL),
-(2, 'CV Hanif Busana', 'Depok', 'Ibu Yuyun', 'Jl. Nusantara No. 8 Depok Jawa Barat', NULL);
+(8, 'Galeri Batik Tasik', 'Tasikmalaya', 'Deden', 'Jl. Cigeureung No 80, Nagarasari, Cipedes, Tasikmalaya', '02652353153'),
+(9, 'Srikandi Muda BUMN', 'Klaten', 'Sulis Sri Tatik', 'Bero, Trucuk, Klaten', 'srikandimd@gmail.com'),
+(10, 'Kharisma Handicraft', 'Yogyakarta', 'Tekad, R. Joko, Sutiyem ', 'Desa Salamrejo, Kec. Sentolo, Kab. Kulon Progo, Yogyakarta', '0214258305'),
+(11, 'CV Rul Butik', 'Depok', 'Fakhirul Akmal', 'Jl. Asrama Divisi 1 Kostrad KM.39, Cilodong, Depok', 'fakhirula@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -157,10 +168,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `created_at`, `last_login`, `status`, `role`) VALUES
-(1, 'admin', '$2y$10$B5YM8DQ.5hoJSyxYfmHoO.pW6xgR9kw5RHSPq6HJXcamMdHVYlsEq', 'admin@gmail.com', '2022-06-11 23:46:37', '2022-06-26 12:08:51', 1, 'administrator'),
-(2, 'aminah', '$2y$10$nlRX3kENBVwbiBdvzqn4a.kM6eEvyKGnMtow/wVDcBFNPCIg49ZKS', 'aminah@gmail.com', '2022-06-11 23:47:09', '2022-06-23 06:51:23', 1, 'public'),
-(3, 'akmal', '$2y$10$1PBuoXGcSVL8KIyMoVeogeEIdWizXr3astKVAEUNyRBn4Ob7jYU4q', 'fakhirula27@gmail.com', '2022-06-11 23:46:37', '2022-06-26 14:41:57', 1, 'administrator'),
-(5, 'rulhaxor', '$2y$10$jm3w905/JD.asVvoxBn7pufUQ8CoKl6Vec3ChN5hlw5oCKAeW0v3K', 'rulhaxor@gmail.com', '2022-06-25 19:38:56', '2022-06-25 19:39:15', 1, 'public');
+(1, 'admin', '$2y$10$B5YM8DQ.5hoJSyxYfmHoO.pW6xgR9kw5RHSPq6HJXcamMdHVYlsEq', 'admin@gmail.com', '2022-06-11 23:46:37', '2022-07-03 07:40:24', 1, 'administrator'),
+(2, 'aminah', '$2y$10$nlRX3kENBVwbiBdvzqn4a.kM6eEvyKGnMtow/wVDcBFNPCIg49ZKS', 'aminah@gmail.com', '2022-06-11 23:47:09', '2022-07-03 07:38:10', 1, 'public'),
+(3, 'akmal', '$2y$10$1PBuoXGcSVL8KIyMoVeogeEIdWizXr3astKVAEUNyRBn4Ob7jYU4q', 'fakhirula27@gmail.com', '2022-06-11 23:46:37', '2022-06-27 16:19:12', 1, 'administrator');
 
 --
 -- Indexes for dumped tables
@@ -217,37 +227,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `jenis_produk`
 --
 ALTER TABLE `jenis_produk`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `suplier`
 --
 ALTER TABLE `suplier`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

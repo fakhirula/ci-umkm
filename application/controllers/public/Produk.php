@@ -28,7 +28,7 @@ class Produk extends CI_Controller
 
         $data['current_user'] = $this->auth_model->current_user();
         $data['produk'] = $produk->getById($this->secure->decrypt_url($id));
-        $data['getRandomLimit'] = $this->produk_model->getRandomLimit();
+        $data['getRandomLimit'] = $this->produk_model->getRandomLimit(4);
         if (!$data["produk"] || !$data['getRandomLimit']) show_404();
 
         $this->load->view("public/detail_produk", $data);

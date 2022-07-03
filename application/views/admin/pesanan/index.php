@@ -91,9 +91,6 @@
                 </div>
             </main>
 
-            <!-- Modal -->
-            <?php $this->load->view("admin/pesanan/modal-add.php") ?>
-
             <!-- Footer -->
             <?php $this->load->view("admin/_partials/footer.php") ?>
 

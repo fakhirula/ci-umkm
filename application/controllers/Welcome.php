@@ -28,7 +28,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data['current_user'] = $this->auth_model->current_user();
-		$data['produk'] = $this->produk_model->getRandomLimit();
+		$data['produk'] = $this->produk_model->getRandomLimit(3);
 		$this->load->view('welcome_message', $data);
 	}
 }
