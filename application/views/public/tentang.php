@@ -12,14 +12,14 @@
             <?php $this->load->view('public/_partials/navbar.php') ?>
         </nav>
         <!-- Header-->
-        <header class="py-5">
+        <header class="bg-dark py-5">
             <div class="container px-5">
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-xxl-6">
                         <div class="text-center my-5">
-                            <h1 class="display-6 fw-bolder mb-3">Berawal dari niat melestarikan budaya dan membantu sesama.</h1>
+                            <h1 class="display-6 fw-bolder text-white mb-3">Berawal dari niat melestarikan budaya dan membantu sesama.</h1>
                             <p class="lead fw-normal text-muted mb-4">SELIR.ID merupakan showroom batik terbesar dan terluas di Indonesia. Kata SELIR diambil dari arti "Istri kesekian Raja". Hal ini juga berarti SELIR.ID merupakan reseller yang mengambil barang olahan dari pengrajin batik tradisional.</p>
-                            <a class="btn btn-dark rounded-0 btn-lg" href="#scroll-target">Awal Cerita Kami</a>
+                            <a class="btn btn-outline-light rounded-0 btn-lg" href="#scroll-target">Awal Cerita Kami</a>
                         </div>
                     </div>
                 </div>
