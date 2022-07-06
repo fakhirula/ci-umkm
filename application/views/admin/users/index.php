@@ -26,12 +26,6 @@
                                         <?= str_replace("_", " ", ucfirst($this->uri->segment(2))) . " List" ?>
                                     </h1>
                                 </div>
-                                <div class="col-12 col-xl-auto mb-3">
-                                    <button class="btn btn-sm btn-light text-primary" type="button" data-bs-toggle="modal" data-bs-target="#addModal">
-                                        <i class="me-1" data-feather="plus"></i>
-                                        <?= "Add New " . str_replace("_", " ", ucfirst($this->uri->segment(2))) ?>
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>

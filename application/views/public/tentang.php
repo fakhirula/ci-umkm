@@ -61,7 +61,7 @@
                         <div class="text-center">
                             <img class="img-fluid rounded-circle mb-4 px-4" src="<?= base_url('assets/images/profiles/rul.png') ?>" alt="Profile Fakhirul Akmal" />
                             <h5 class="fw-bolder">Fakhirul Akmal</h5>
-                            <div class="fst-italic text-muted">Back-End Web Developer</div>
+                            <div class="fst-italic text-muted">Full Stack Web Developer</div>
                         </div>
                     </div>
                     <div class="col mb-5 mb-5 mb-xl-0">

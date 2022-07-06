@@ -64,7 +64,15 @@ class Users extends CI_Controller
     {
         if (!isset($id)) show_404();
 
-        if ($this->users->delete($this->secure->decrypt_url($id))) {
+        $decrypt_id = $this->secure->decrypt_url($id);
+        $users_id = $this->users->getById($decrypt_id);
+
+        if ($decrypt_id == ($users_id->role == 'administrator')) {
+            $this->session->set_flashdata('alert-error', 'Tidak bisa menghapus akun administrator!');
+            redirect(site_url('admin/users'), 'refresh');
+        }
+
+        if ($this->users->delete($decrypt_id)) {
             $this->session->set_flashdata('alert-success', 'Data berhasil dihapus');
             redirect(site_url('admin/users'));
         }
