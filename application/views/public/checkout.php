@@ -28,18 +28,15 @@
                             <h6 class="my-0"><?= $this->secure->decrypt_url($jumlah) . 'x' ?> Rp<?= number_format($produk->harga_jual * $this->secure->decrypt_url($jumlah), 0, ',', '.'); ?></h6>
                         </li>
                     </ul>
-
-                    <form class="card p-2">
-                        <div class="input-group">
-                            <input type="text" <?= set_value('redeem'); ?> id="redeem" name="redeem" class="form-control" placeholder="Promo code">
-                            <button type="submit" onclick="
-                            Swal.fire(
-                            'Success',
-                            'Kode berhasil digunakan',
-                            'success'
-                            )" class="btn btn-dark">Redeem</button>
-                        </div>
-                    </form>
+                    <div class="input-group">
+                        <input type="text" <?= set_value('redeem'); ?> id="redeem" name="redeem" class="form-control" placeholder="Promo code">
+                        <button type="submit" onclick="
+                        Swal.fire(
+                        'Success',
+                        'Kode berhasil digunakan',
+                        'success'
+                        )" class="btn btn-dark">Redeem</button>
+                    </div>
                 </div>
                 <?php if ($this->session->flashdata('alert-error')) : ?>
                     <div class="alert alert-danger mt-2" role="alert">
