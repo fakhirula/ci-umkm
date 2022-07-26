@@ -12,9 +12,7 @@
 git clone https://github.com/fakhirula/ci-umkm
 ```
 2. Open `http://localhost/ci-umkm/` to see the website
-3. Login as administrator:
-username `admin`
-password `admin`
+3. Use username = `admin` and password = `admin` to login as administrator
 
 ## License
 SELIR.ID is under MIT License.
